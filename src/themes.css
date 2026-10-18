@@ -1,0 +1,77 @@
+/* ===== Alternate themes (branch: themes). Pick with ?theme=lime|purple&font=unbounded|chakra ===== */
+.mark-new{display:none;width:40px;height:40px}
+.hl{font-style:normal}
+
+/* fonts: wide display faces need a smaller scale than the condensed stencil */
+html[data-font="unbounded"]{--display:"Unbounded","Arial Black",sans-serif;--dw:800;--ds:.6;--dsh:.68;--ds3:.66;--wordmark:"Unbounded","Arial Black",sans-serif;--ww:800;--wds:.74}
+html[data-font="unbounded"] h1,html[data-font="unbounded"] h2{line-height:1;letter-spacing:-.01em}
+html[data-font="unbounded"] h3{line-height:1.05}
+html[data-font="chakra"]{--display:"Chakra Petch","Arial Narrow",sans-serif;--dw:700;--ds:.8;--dsh:.9;--ds3:.86}
+html[data-font="chakra"] h1,html[data-font="chakra"] h2{line-height:.92;letter-spacing:-.005em}
+/* chakra keeps the stencil for the KUDOKEN wordmark only */
+html[data-font="chakra"]{--wordmark:"Big Shoulders Stencil",Impact,sans-serif}
+html[data-mark="new"] .mark-old{display:none}
+html[data-mark="new"] .mark-new{display:block}
+
+/* palettes */
+html[data-theme="lime"]{
+  --a1:#f2ff6b; --a2:#b6ff2e; --a3:#3dffa8;
+  --accent-l:#c8ff3e; --accent-fill:#b6ff2e; --accent-deep:#3d7a00; --on-accent:#0b2131;
+  --deep-grad:linear-gradient(100deg,#3d7a00,#0f7a52);
+  --glow:rgba(182,255,46,.55); --glow-soft:rgba(182,255,46,.22);
+  --dev-bg:#efe6d4; --dev-ink:#5a4520; --live-bg:#dcffa0; --live-ink:#1f3d00;
+}
+html[data-theme="purple"]{
+  --a1:#f6dcff; --a2:#c9a3ff; --a3:#a283ff;
+  --accent-l:#cfb0ff; --accent-fill:#b48cff; --accent-deep:#6b2fd9; --on-accent:#0b2131;
+  --deep-grad:linear-gradient(100deg,#7b3fe4,#4b2bd0);
+  --glow:rgba(170,125,255,.6); --glow-soft:rgba(170,125,255,.25);
+  --dev-bg:#ece2ff; --dev-ink:#4a2391; --live-bg:#dcebd2; --live-ink:#2f5a1f;
+}
+html[data-theme]{--accent-grad:linear-gradient(100deg,var(--a1) 0%,var(--a2) 45%,var(--a3) 100%)}
+
+/* glowing gradient words */
+html[data-theme] .hl,html[data-theme] .hero h1 span,html[data-theme] .bigstat{background:var(--accent-grad);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 0 14px var(--glow-soft)) drop-shadow(0 0 2px var(--glow-soft))}
+html[data-theme] .on-dark .hl,html[data-theme] .hero h1 span{filter:drop-shadow(0 2px 10px rgba(4,18,28,.55)) drop-shadow(0 0 20px var(--glow))}
+html[data-theme] .scene.light .hl{background:var(--deep-grad);-webkit-background-clip:text;background-clip:text;filter:none}
+
+/* buttons */
+html[data-theme] .btn.buy{background:var(--accent-grad);border-color:transparent;color:var(--on-accent);box-shadow:0 0 0 1px rgba(255,255,255,.25) inset,0 6px 26px -6px var(--glow)}
+html[data-theme] .btn.buy:hover{background:var(--accent-grad);border-color:transparent;box-shadow:0 0 0 1px rgba(255,255,255,.35) inset,0 8px 34px -4px var(--glow)}
+html[data-theme] .nav .btn.buy{box-shadow:0 0 0 1.5px var(--accent-deep) inset}
+html[data-theme] .quote{background:var(--accent-grad);color:var(--on-accent);box-shadow:0 0 50px -14px var(--glow)}
+html[data-theme] .pill.dev{background:var(--dev-bg);color:var(--dev-ink)}
+html[data-theme] .pill.live{background:var(--live-bg);color:var(--live-ink)}
+html[data-theme] .copy-btn.done{background:var(--accent-deep);border-color:var(--accent-deep)}
+
+/* infographics on dark scenes go to deep ocean glass so the neon reads */
+html[data-theme] .scene:not(.light) .glass{background:rgba(8,24,36,.8);color:var(--shell);border:1px solid rgba(255,255,255,.1);box-shadow:0 24px 60px -30px rgba(0,0,0,.7),0 0 0 1px var(--glow-soft)}
+html[data-theme] .scene:not(.light) .glass .note,
+html[data-theme] .scene:not(.light) figure.info figcaption,
+html[data-theme] .scene:not(.light) .addr label,
+html[data-theme] .scene:not(.light) .checks span,
+html[data-theme] .scene:not(.light) .wf .lbl small{color:#b9c7d0}
+html[data-theme] .scene:not(.light) .checks li{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.12)}
+html[data-theme] .scene:not(.light) .addr code{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.18);color:var(--comet)}
+html[data-theme] .scene:not(.light) .wf .track{border-color:rgba(255,255,255,.3)}
+html[data-theme] .scene:not(.light) .wf .bar em{color:var(--shell)}
+html[data-theme] .scene:not(.light) .wf .bar.acc,html[data-theme] .scene:not(.light) .dots i.cold{box-shadow:0 0 14px var(--glow)}
+html[data-theme] .scene:not(.light) .dots i{opacity:.9}
+html[data-theme] .scene:not(.light) figure.info circle[style*="accent-fill"]{filter:drop-shadow(0 0 6px var(--glow))}
+
+/* timeline + counter */
+html[data-theme] .timeline li.key::after{background:var(--accent-grad);box-shadow:0 0 0 4px var(--glow-soft),0 0 18px var(--glow)}
+html[data-theme] .timeline li.key time{color:var(--accent-l);text-shadow:0 0 14px var(--glow-soft)}
+
+/* light scenes use the deep tone for anything accent */
+html[data-theme] .scene.light{--accent-fill:var(--accent-deep);--on-accent:#fff}
+
+/* ecosystem hub ring */
+html[data-theme] .eco svg.lines circle{stroke:var(--accent-l);filter:drop-shadow(0 0 10px var(--glow))}
+html[data-theme] .faq summary::after{text-shadow:0 0 12px var(--glow)}
+html[data-mark="new"] .eco .hub .mark-new{width:96px;height:96px;filter:drop-shadow(0 0 18px var(--glow))}
+html[data-mark="new"] footer .mark-new{width:40px;height:40px}
+html[data-font] .hero h1 span{white-space:nowrap}
+html[data-font="unbounded"] .hero h1{font-size:min(10.2vw,4.1rem)}
+html[data-font="chakra"] .hero h1{font-size:min(13vw,5.3rem)}
+@media(max-width:439px){html[data-font="unbounded"] .brand span{font-size:1.02rem}html[data-mark="new"] .nav .mark-new{width:32px;height:32px}}

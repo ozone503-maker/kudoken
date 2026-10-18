@@ -1,6 +1,6 @@
 <header class="nav">
   <div class="wrap">
-    <a class="brand" href="#top" aria-label="Kudoken home"><img src="images/mark.png" width="242" height="170" alt=""><span>Kudoken</span></a>
+    <a class="brand" href="#top" aria-label="Kudoken home"><img class="mark-old" src="images/mark.png" width="242" height="170" alt="">{{newmark}}<span>Kudoken</span></a>
     <nav class="links" aria-label="Sections">
       <a href="#token">Token</a><a href="#plan">5 year plan</a><a href="#base">Base</a><a href="#universe">Universe</a><a href="#faq">FAQ</a>
     </nav>
@@ -40,7 +40,7 @@
   {{pic lagoon-island|Blue lagoon under a wide sky, a small island with trees on the horizon|1800|1350}}
   <div class="wrap">
     <div class="copy scrim on-dark">
-      <h2 id="token-title">Nothing up<br>the sleeve</h2>
+      <h2 id="token-title">Nothing up<br><em class="hl">the sleeve</em></h2>
       <p class="lede">One billion KDU were created once, in May 2021. The contract is verified on Etherscan, and nobody can print more, burn yours, tax your trades or flip a switch on your wallet.</p>
     </div>
     <div class="panels c3 push">
@@ -62,7 +62,7 @@
             <title id="donut-t">KDU supply breakdown</title>
             <desc id="donut-d">Of 1,000,000,000 KDU: 928,063,063 (92.8%) in the founders' cold storage wallet, 41,299,598 (4.1%) in community wallets, 30,637,339 (3.1%) in the Uniswap pool.</desc>
             <g transform="rotate(-90 120 120)" fill="none" stroke-width="34">
-              <circle cx="120" cy="120" r="88" stroke="#b8381f" stroke-dasharray="513.13 552.92"/>
+              <circle cx="120" cy="120" r="88" style="stroke:var(--accent-fill)" stroke-dasharray="513.13 552.92"/>
               <circle cx="120" cy="120" r="88" stroke="#2f8fa3" stroke-dasharray="22.83 552.92" stroke-dashoffset="-513.13"/>
               <circle cx="120" cy="120" r="88" stroke="#2348c4" stroke-dasharray="16.94 552.92" stroke-dashoffset="-535.96"/>
             </g>
@@ -70,7 +70,7 @@
             <text x="120" y="142" text-anchor="middle" class="svg-small">in cold storage</text>
           </svg>
           <ul class="legend">
-            <li><i style="background:#b8381f"></i><span>Founders' cold storage</span><b>928,063,063</b></li>
+            <li><i style="background:var(--accent-fill)"></i><span>Founders' cold storage</span><b>928,063,063</b></li>
             <li><i style="background:#2f8fa3"></i><span>Community wallets</span><b>41,299,598</b></li>
             <li><i style="background:#2348c4"></i><span>Uniswap V3 pool</span><b>30,637,339</b></li>
           </ul>
@@ -82,7 +82,7 @@
         <figure class="info">
           <div class="dots" role="img" aria-label="190 dots, one per holder wallet. One red dot is the cold storage wallet, one blue dot is the Uniswap pool, 188 teal dots are community wallets.">{{dots}}</div>
           <ul class="legend">
-            <li><i style="background:#b8381f"></i><span>Cold storage wallet</span><b>1</b></li>
+            <li><i style="background:var(--accent-fill)"></i><span>Cold storage wallet</span><b>1</b></li>
             <li><i style="background:#2348c4"></i><span>Uniswap pool</span><b>1</b></li>
             <li><i style="background:#2f8fa3"></i><span>Community wallets</span><b>188</b></li>
           </ul>
@@ -106,7 +106,7 @@
   {{pic calm-bay|Still blue bay mirroring the sky, small islands and palms along the far shore|1800|1350}}
   <div class="wrap">
     <div class="copy scrim on-dark">
-      <h2 id="plan-title">The 5 year plan<br>landed<br class="m"> on schedule</h2>
+      <h2 id="plan-title">The 5 year plan<br>landed<br class="m"> <em class="hl">on schedule</em></h2>
       <p class="lede">On October 21, 2021 the founders moved the stash into cold storage and Jessie moved to FlashTown with a 5 year plan. That wallet has not moved a single token since.</p>
     </div>
     <div class="glass dark push" style="margin-top:clamp(90px,16vw,220px)">
@@ -129,7 +129,7 @@
             <li><span class="lbl">Into the pool<small>Jul 15, 2021</small></span><span class="track"><span class="bar out" style="left:87.5%;width:12.5%;background:#2348c4"><em>minus 125,000,000</em></span></span></li>
             <li><span class="lbl">Kept back</span><span class="track"><span class="bar" style="left:0;width:87.5%;background:#386b86">875,000,000</span></span></li>
             <li><span class="lbl">Out of the pool<small>Oct 21, 2021</small></span><span class="track"><span class="bar out" style="left:87.5%;width:5.31%;background:#2f8fa3"><em>plus 53,063,063</em></span></span></li>
-            <li><span class="lbl">Cold storage</span><span class="track"><span class="bar" style="left:0;width:92.81%;background:#b8381f">928,063,063</span></span></li>
+            <li><span class="lbl">Cold storage</span><span class="track"><span class="bar acc" style="left:0;width:92.81%;background:var(--accent-fill)">928,063,063</span></span></li>
           </ol>
           <figcaption>875,000,000 kept back plus 53,063,063 from the pool equals 928,063,063, which is 92.8% of all KDU.</figcaption>
         </figure>
@@ -150,7 +150,7 @@
   <div class="wrap">
     <div class="copy scrim">
       <span class="pill dev">Coming, in development</span>
-      <h2 id="base-title" style="margin-top:14px">Same KDU<br>a lighter ride</h2>
+      <h2 id="base-title" style="margin-top:14px">Same KDU<br><em class="hl">a lighter ride</em></h2>
       <p class="lede">Ethereum is where Kudoken lives. Base is where it will get spent. Moving KDU onto Base makes a tip or a checkout cost a fraction of a cent, without making a single new token.</p>
     </div>
     <div class="panels c21" style="margin-top:clamp(140px,24vw,320px)">
@@ -195,7 +195,7 @@
   <div class="wrap wallet-wrap" style="margin-top:clamp(60px,12vw,170px)">
     <div class="copy scrim on-dark">
       <span class="pill test">Test network, play money</span>
-      <h2 id="wallet-title" style="margin-top:14px">Try the wallet<br>with play money</h2>
+      <h2 id="wallet-title" style="margin-top:14px">Try the wallet<br>with <em class="hl">play money</em></h2>
       <p class="lede">This is the Kudoken wallet that will plug into every Kudoken spot. Right now it runs on Base Sepolia, Base's test network, with a test version of KDU.</p>
       <p>Nothing here is real money. Test tokens have no value and cannot be swapped for real KDU. To send, grab free test ETH from a <a href="https://docs.base.org/base-chain/network-information/network-faucets" target="_blank" rel="noopener">Base Sepolia faucet</a>.</p>
     </div>
@@ -211,7 +211,7 @@
   {{pic deep-sky-beach|Deep blue sky with small clouds over a turquoise bay and a long sandy beach|1080|992}}
   <div class="wrap">
     <div class="copy scrim on-dark">
-      <h2 id="universe-title">One wallet,<br>everywhere</h2>
+      <h2 id="universe-title">One wallet,<br><em class="hl">everywhere</em></h2>
       <p class="lede">KDU is the shared currency for Jessie Sponberg's universe. The sites are live. Paying, winning and giving with KDU in each one is being built now.</p>
     </div>
     <div class="glass dark" style="margin-top:clamp(70px,12vw,160px)">
@@ -223,7 +223,7 @@
           </g>
           <circle cx="500" cy="310" r="96" fill="#0d2738" stroke="rgba(127,208,242,.6)" stroke-width="2"/>
         </svg>
-        <div class="hub"><img src="images/mark.png" width="242" height="170" alt=""><b>KDU</b><span class="pill live">Live on Ethereum</span></div>
+        <div class="hub"><img class="mark-old" src="images/mark.png" width="242" height="170" alt="">{{newmark}}<b>KDU</b><span class="pill live">Live on Ethereum</span></div>
         <ul>
           <li class="dev"><b>Monkey Jockey</b><p>Race rescue dogs, win KDU</p><span class="pill dev">KDU payouts coming</span><br><a href="https://monkeyjockey.space" target="_blank" rel="noopener">monkeyjockey.space</a></li>
           <li class="dev"><b>Outlet Mall</b><p>Pay at the stalls with KDU</p><span class="pill dev">Checkout coming</span><br><a href="https://outletmall.space" target="_blank" rel="noopener">outletmall.space</a></li>
@@ -244,7 +244,7 @@
   <div class="wrap">
     <div class="copy scrim">
       <span class="pill dev">The plan, in development</span>
-      <h2 id="loop-title" style="margin-top:14px">Play, earn,<br>spend, give</h2>
+      <h2 id="loop-title" style="margin-top:14px">Play, earn,<br>spend, <em class="hl">give</em></h2>
       <p class="lede">The idea from the 2021 whitepaper, rebuilt for the universe. None of this loop is live yet. Here is how it is meant to go round.</p>
     </div>
     <div class="panels c2">
@@ -260,7 +260,7 @@
               <path d="M178 368 A150 150 0 0 1 72 262"/><path d="M72 178 A150 150 0 0 1 178 72"/>
             </g>
             <g text-anchor="middle">
-              <circle cx="220" cy="70" r="58" fill="#b8381f"/><text x="220" y="70" fill="#fff" class="svg-big" style="font-size:30px">Play</text><text x="220" y="92" fill="#fff" class="svg-small" style="opacity:1">Monkey Jockey</text>
+              <circle cx="220" cy="70" r="58" style="fill:var(--accent-fill)"/><text x="220" y="70" style="fill:var(--on-accent)" class="svg-big" style="font-size:30px">Play</text><text x="220" y="92" style="fill:var(--on-accent)" class="svg-small" style="opacity:1">Monkey Jockey</text>
               <circle cx="370" cy="220" r="58" fill="#2348c4"/><text x="370" y="220" fill="#fff" class="svg-big" style="font-size:30px">Earn</text><text x="370" y="242" fill="#fff" class="svg-small" style="opacity:1">KDU to you</text>
               <circle cx="220" cy="370" r="58" fill="#2f8fa3"/><text x="220" y="370" fill="#fff" class="svg-big" style="font-size:30px">Spend</text><text x="220" y="392" fill="#fff" class="svg-small" style="opacity:1">Mall, Biorama</text>
               <circle cx="70" cy="220" r="58" fill="#55703f"/><text x="70" y="220" fill="#fff" class="svg-big" style="font-size:30px">Give</text><text x="70" y="242" fill="#fff" class="svg-small" style="opacity:1">FlashTown</text>
@@ -274,7 +274,7 @@
         <h3>Energy is<br>currency</h3>
         <figure class="info">
           <ol class="energy" aria-label="Energy is currency cycle">
-            <li style="--c:#b8381f"><b>Your energy</b><span>Time, play, art, care. The stuff you put into the world.</span></li>
+            <li style="--c:var(--accent-fill)"><b>Your energy</b><span>Time, play, art, care. The stuff you put into the world.</span></li>
             <li style="--c:#2348c4"><b>Becomes KDU</b><span>Recognized as tokens when you play and take part. Coming.</span></li>
             <li style="--c:#2f8fa3"><b>Flows to makers</b><span>Spent with the people building the universe. Coming.</span></li>
             <li style="--c:#55703f"><b>Feeds the animals</b><span>Shared with rescue animals through staking. Coming.</span></li>
@@ -290,7 +290,7 @@
 <!-- POSTCARDS -->
 <section class="postcards" aria-labelledby="pc-title">
   <div class="wrap">
-    <h2 id="pc-title">Postcards from<br>the 5 year plan</h2>
+    <h2 id="pc-title">Postcards from<br><em class="hl">the 5 year plan</em></h2>
     <p class="lede" style="color:#d3dde3">Blue water from Jessie's Kudoken album. Swipe through.</p>
   </div>
   <div class="strip" role="region" aria-label="Ocean photos from the Kudoken album" tabindex="0">
@@ -318,7 +318,7 @@
   {{pic ironwood-lagoon|Turquoise lagoon edged with black lava rock and ironwood trees|1800|1350}}
   <div class="wrap" style="margin-top:clamp(160px,26vw,340px)">
     <div class="copy right scrim">
-      <h2 id="galact-title">Galactivism<br>starts at home</h2>
+      <h2 id="galact-title">Galactivism<br>starts <em class="hl">at home</em></h2>
       <p class="lede">The 2021 whitepaper built giving back into the token: stake KDU and a share goes to animal sanctuaries.</p>
       <p>That idea is coming home to FlashTown, the rescue farm and sanctuary on Kīlauea that looks after about 25 rescue cats and 5 rescue dogs. Sanctuary staking is in development and not live yet.</p>
       <div class="cta"><a class="btn" href="https://flashtown.space" target="_blank" rel="noopener">Visit FlashTown</a><a class="btn line" href="https://github.com/KudokenToken/Kudoken" target="_blank" rel="noopener">Read the whitepaper</a></div>
@@ -329,7 +329,7 @@
 <!-- VAULT -->
 <section id="culture" class="vault-sec" aria-labelledby="culture-title">
   <div class="wrap">
-    <h2 id="culture-title">Masked up<br>since 2021</h2>
+    <h2 id="culture-title">Masked up<br><em class="hl">since 2021</em></h2>
     <p class="lede" style="color:#d3dde3">The Shinobi, the hooded K, the spinning kudoken.io coin and the blue coin art. Branding straight from the album.</p>
     <div class="vault">
       <figure class="wide"><img src="images/shinobi.jpg" width="1000" height="564" loading="lazy" alt="Comic style Kudoken Shinobi in a gold mask and red scarf, katana over the shoulder, with the comet K logo"><figcaption>Kudoken Shinobi</figcaption></figure>
@@ -354,7 +354,7 @@
 <section id="faq" class="scene" style="--pos:50% 0%;--pos-m:50% 0%;min-height:auto" aria-labelledby="faq-title">
   {{pic big-sky|Huge clear blue sky over a wide sandy beach with people at the waterline|1080|1080}}
   <div class="wrap">
-    <div class="copy scrim on-dark"><h2 id="faq-title">Straight<br>answers</h2></div>
+    <div class="copy scrim on-dark"><h2 id="faq-title">Straight<br><em class="hl">answers</em></h2></div>
     <div class="glass dark faq" style="max-width:820px;margin-top:24px">
       <details><summary>What is Kudoken?</summary><p>Kudoken (KDU) is an ERC-20 token on Ethereum with a fixed supply of 1,000,000,000, deployed on May 6, 2021 by Jessie Sponberg and Gabriel Rogers. It is the unofficial token of galactivism and the shared currency for Jessie's projects.</p></details>
       <details><summary>How do I buy KDU?</summary><p>Use any Buy KDU button. It opens Uniswap with the real contract already selected. Connect an Ethereum wallet, choose how much ETH to swap and confirm. There is one pool, so check the price impact Uniswap shows before you confirm.</p></details>
@@ -372,7 +372,7 @@
   {{pic lava-surf|White surf crashing over black lava rock under a deep blue sky|1800|1350}}
   <div class="wrap">
     <div class="copy scrim on-dark">
-      <h2 id="closing-title">Put your energy<br>somewhere<br class="m"> good</h2>
+      <h2 id="closing-title">Put your energy<br>somewhere<br class="m"> <em class="hl">good</em></h2>
       <div class="cta">
         <a class="btn buy" href="{{BUY}}" target="_blank" rel="noopener">Buy KDU on Uniswap</a>
         <button class="btn line" type="button" data-copy="0x09851dD4760a8ed111f850affb38B10f84e80C8A">Copy contract address</button>
@@ -387,7 +387,7 @@
 <footer>
   <div class="wrap">
     <div class="top">
-      <a class="brand" href="#top" aria-label="Back to top"><img src="images/mark.png" width="242" height="170" alt=""><span>Kudoken</span></a>
+      <a class="brand" href="#top" aria-label="Back to top"><img class="mark-old" src="images/mark.png" width="242" height="170" alt="">{{newmark}}<span>Kudoken</span></a>
       <nav aria-label="Footer">
         <a href="{{BUY}}" target="_blank" rel="noopener">Buy on Uniswap</a>
         <a href="https://etherscan.io/token/0x09851dD4760a8ed111f850affb38B10f84e80C8A" target="_blank" rel="noopener">Etherscan</a>
