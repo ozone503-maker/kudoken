@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kudoken — Play. Earn. Spend. #EnergyIsCurrency</title>
+<meta name="description" content="Kudoken is the utility token for Jessie's universe: earn it playing games, spend it across the Outlet Mall, Biorama, and beyond. Play, earn, spend. #EnergyIsCurrency">
+<style>
+:root{
+  --bg:#07070d; --bg2:#0d0d17; --card:#12121e;
+  --cream:#f3ecdc; --muted:#a8a29a;
+  --blue1:#3b82f6; --blue2:#7dd3fc; --amber:#fcae4c;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--cream);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
+.grad{background:linear-gradient(100deg,var(--blue1),var(--blue2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+/* nav */
+nav{position:sticky;top:0;z-index:50;background:rgba(7,7,13,.88);backdrop-filter:blur(10px);border-bottom:1px solid #1e1e2e}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
+.logo{font-weight:800;font-size:1.25rem;letter-spacing:.08em}
+.logo span{color:var(--amber)}
+.navlinks{display:none;gap:26px}
+.navlinks a{color:var(--muted);text-decoration:none;font-size:.92rem}
+.navlinks a:hover{color:var(--cream)}
+.btn{display:inline-block;background:linear-gradient(100deg,var(--blue1),var(--blue2));color:#06121f;font-weight:700;text-decoration:none;padding:12px 28px;border-radius:999px;font-size:1rem;border:none;cursor:pointer}
+.btn:hover{filter:brightness(1.12)}
+.btn.ghost{background:transparent;color:var(--cream);border:1px solid #2c2c40}
+@media(min-width:760px){.navlinks{display:flex}}
+/* hero */
+.hero{position:relative;text-align:center;padding:110px 20px 90px;background:#07070d;overflow:hidden}
+.hero .bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 65%}
+.hero .shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(7,7,13,.42) 0%,rgba(7,7,13,.22) 45%,rgba(7,7,13,.78) 100%)}
+.hero .inner{position:relative;z-index:2}
+.hero .kicker{color:var(--amber);letter-spacing:.28em;font-size:.8rem;font-weight:700;margin-bottom:18px;text-shadow:0 2px 12px rgba(0,0,0,.6)}
+.hero h1{font-size:clamp(3rem,10vw,6.5rem);font-weight:900;letter-spacing:.02em;line-height:1.02;text-shadow:0 4px 24px rgba(0,0,0,.55)}
+.hero p.sub{color:#e8e2d4;font-size:1.15rem;max-width:620px;margin:22px auto 0;text-shadow:0 2px 10px rgba(0,0,0,.7)}
+.hero p.tag{margin-top:14px;color:var(--amber);font-weight:700;letter-spacing:.06em;text-shadow:0 2px 10px rgba(0,0,0,.7)}
+.hero .cta{margin-top:34px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.badges{margin-top:26px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.badge{font-size:.78rem;color:#e8e2d4;border:1px solid rgba(255,255,255,.28);background:rgba(7,7,13,.45);padding:5px 14px;border-radius:999px}
+/* sections */
+section{padding:64px 0}
+.sec-kicker{color:var(--amber);letter-spacing:.24em;font-size:.78rem;font-weight:700;margin-bottom:12px}
+h2{font-size:clamp(1.8rem,5vw,2.8rem);font-weight:800;margin-bottom:14px;line-height:1.15}
+.lede{color:var(--muted);max-width:640px;font-size:1.05rem}
+/* cards */
+.grid{display:grid;gap:18px;margin-top:34px}
+@media(min-width:760px){.grid.c3{grid-template-columns:repeat(3,1fr)}.grid.c2{grid-template-columns:repeat(2,1fr)}}
+.card{background:var(--card);border:1px solid #1e1e30;border-radius:16px;padding:28px}
+.card .n{font-size:.78rem;color:var(--amber);font-weight:700;letter-spacing:.18em;margin-bottom:10px}
+.card h3{font-size:1.25rem;margin-bottom:8px}
+.card p{color:var(--muted);font-size:.96rem}
+.card .go{display:inline-block;margin-top:14px;color:var(--blue2);text-decoration:none;font-weight:600;font-size:.95rem}
+/* contract */
+.contract{background:var(--bg2);border:1px solid #1e1e30;border-radius:16px;padding:28px;margin-top:34px;display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between}
+.contract code{font-family:ui-monospace,Menlo,monospace;font-size:.82rem;color:var(--blue2);word-break:break-all}
+.contract .row{display:flex;gap:10px;flex-wrap:wrap}
+.mini{background:#1a1a2c;color:var(--cream);border:1px solid #2c2c44;padding:9px 18px;border-radius:999px;text-decoration:none;font-size:.88rem;font-weight:600}
+/* faq */
+.faq{margin-top:30px}
+.faq details{background:var(--card);border:1px solid #1e1e30;border-radius:12px;margin-bottom:12px;padding:18px 22px}
+.faq summary{font-weight:700;cursor:pointer;font-size:1.02rem}
+.faq summary::marker{color:var(--amber)}
+.faq p{color:var(--muted);margin-top:10px;font-size:.96rem}
+/* lifestyle strip */
+.strip{display:flex;gap:12px;overflow-x:auto;padding:10px 20px 26px;scroll-snap-type:x mandatory}
+.strip img{height:220px;border-radius:14px;scroll-snap-align:start;flex-shrink:0;border:1px solid #1e1e30}
+@media(min-width:760px){.strip img{height:280px}}
+/* feature */
+.feature{display:grid;gap:22px;margin-top:34px;align-items:center}
+@media(min-width:760px){.feature{grid-template-columns:1fr 1fr}}
+.feature img{width:100%;border-radius:18px;border:1px solid #1e1e30}
+.feature h3{font-size:1.5rem;margin-bottom:10px}
+.feature p{color:var(--muted)}
+/* footer */
+footer{border-top:1px solid #1e1e2e;padding:40px 0 56px;text-align:center;color:var(--muted);font-size:.88rem}
+footer .fl{display:flex;gap:20px;justify-content:center;margin:16px 0;flex-wrap:wrap}
+footer a{color:var(--blue2);text-decoration:none}
+.big-cta{text-align:center;padding:40px 20px 80px}
+.big-cta h2{margin-bottom:20px}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="logo">KUDO<span>KEN</span></div>
+    <div class="navlinks">
+      <a href="#lifestyle">Lifestyle</a>
+      <a href="#culture">Culture</a>
+      <a href="#ecosystem">Ecosystem</a>
+      <a href="#get">Get Kudoken</a>
+      <a href="#faq">FAQ</a>
+    </div>
+    <a href="https://app.uniswap.org/" target="_blank" rel="noopener" style="color:var(--amber);font-weight:700;text-decoration:none">Get Kudoken</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <img class="bg" src="images/hero-beach.jpg" alt="">
+  <div class="shade"></div>
+  <div class="inner">
+  <div class="kicker">THE UNOFFICIAL TOKEN OF GALACTIVISM</div>
+  <h1><span class="grad">KUDOKEN</span></h1>
+  <p class="sub">Play games. Earn tokens. Spend them across a real universe — the Outlet Mall, Biorama, and the games themselves.</p>
+  <p class="tag">#EnergyIsCurrency</p>
+  <div class="cta">
+    <a href="https://app.uniswap.org/" target="_blank" rel="noopener" style="color:var(--amber);font-weight:700;text-decoration:none">Get Kudoken</a>
+  </div>
+  <p style="margin-top:18px"><a href="#ecosystem" style="color:var(--cream);font-weight:600;text-decoration:none;border-bottom:1px solid var(--amber);padding-bottom:2px">How it works ↓</a></p>
+  </div>
+</header>
+
+<section id="lifestyle" style="padding-bottom:20px">
+  <div class="wrap">
+    <div class="sec-kicker">THE LIFESTYLE</div>
+    <h2>Real coins. Real places. <span class="grad">Real life.</span></h2>
+  </div>
+  <div class="strip" style="margin-top:28px">
+    <img src="images/beach-2.jpg" alt="Kudoken coins in the sand">
+    <img src="images/beach-3.jpg" alt="Kudoken coins at the shoreline">
+    <img src="images/beach-4.jpg" alt="Kudoken coins close up on sand">
+    <img src="images/beach-5.jpg" alt="Kudoken coins with the ocean behind">
+    <img src="images/surfer.jpg" alt="Kudoken surf culture">
+  </div>
+</section>
+
+<section id="ecosystem">
+  <div class="wrap">
+    <div class="sec-kicker">THE ECOSYSTEM</div>
+    <h2>What is <span class="grad">Kudoken?</span></h2>
+    <p class="lede">Kudoken is a blockchain ecosystem that rewards community participation. Interact with first-party and partner programs, earn tokens, then decide how to use them — spend them, stake them, redeem them for rewards, or trade them. As the network of partners grows, the ways to earn and spend keep growing with it.</p>
+    <div class="grid c3">
+      <div class="card">
+        <h3>Play</h3>
+        <p>Race in Monkey Jockey. Fly Hawaiʻi Island. Games feed kudokens straight into your wallet — winning pays.</p>
+      </div>
+      <div class="card">
+        <h3>Earn</h3>
+        <p>Businesses get a free starter chunk to onboard. Participants earn through programs, events, and community rewards.</p>
+      </div>
+      <div class="card">
+        <h3>Spend</h3>
+        <p>One wallet, everywhere: the Outlet Mall, Biorama bowls, games, partner businesses. Real spending, not speculation.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="culture">
+  <div class="wrap">
+    <div class="sec-kicker">THE CULTURE</div>
+    <h2>Not a coin. <span class="grad">A movement.</span></h2>
+    <p class="lede">Kudoken has a face, a mask, and an attitude. This is crypto with a culture — built by players, holders, and believers.</p>
+    <div class="feature">
+      <img src="images/shinobi.jpg" alt="Kudoken Shinobi">
+      <div>
+        <h3>🥷 Kudoken Shinobi</h3>
+        <p>The spirit of the token — silent, sharp, always moving. The Shinobi doesn't chase the market. The market comes to the Shinobi.</p>
+      </div>
+    </div>
+    <div class="feature">
+      <img src="images/goodluck.jpg" alt="They say you can't buy good luck — but you can buy Kudoken">
+      <div>
+        <h3>🍀 Make your own luck</h3>
+        <p>They say you can't buy good luck. But you can buy Kudoken on Uniswap — and luck will find you.</p>
+        <p style="margin-top:16px"><a class="btn" href="https://app.uniswap.org/" target="_blank" rel="noopener">Get Kudoken</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="get" style="background:var(--bg2)">
+  <div class="wrap">
+    <div class="sec-kicker">THREE DOORS IN</div>
+    <h2>Get <span class="grad">Kudoken</span></h2>
+    <p class="lede">Three ways in — pick yours.</p>
+    <div class="grid c3">
+      <div class="card">
+        <h3>🎮 Earn it playing</h3>
+        <p>Monkey Jockey's seeded racing and Fly Hawaiʻi Island pay kudokens to your wallet. Play well, get paid.</p>
+        <a class="go" href="#spend">See the games →</a>
+      </div>
+      <div class="card">
+        <h3>💱 Buy it</h3>
+        <p>Grab kudokens on Uniswap and hold them in any ERC-20 wallet. Then spend them across the universe.</p>
+        <a class="go" href="https://app.uniswap.org/" target="_blank" rel="noopener">Open Uniswap →</a>
+      </div>
+      <div class="card">
+        <h3>🏪 Onboard your business</h3>
+        <p>Local businesses get a free starter chunk of kudokens to begin accepting them. The network grows, your customers grow with it.</p>
+        <a class="go" href="#faq">How onboarding works →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="spend">
+  <div class="wrap">
+    <div class="sec-kicker">ONE WALLET, EVERYWHERE</div>
+    <h2>Where Kudoken <span class="grad">spends</span></h2>
+    <p class="lede">Kudoken is the connective tissue across the whole universe. Earn it in one place, spend it in another.</p>
+    <div class="grid c3">
+      <div class="card">
+        <div class="n">🛍️</div>
+        <h3>Outlet Mall</h3>
+        <p>The hub — shop, discover, and spend kudokens with participating merchants across the mall.</p>
+      </div>
+      <div class="card">
+        <div class="n">🏠</div>
+        <h3>Biorama</h3>
+        <p>The decentralized social layer. Tip creators, unlock rooms, and move value between bowls.</p>
+      </div>
+      <div class="card">
+        <div class="n">🏁</div>
+        <h3>The Games</h3>
+        <p>Monkey Jockey, Fly Hawaiʻi Island, and what's next — entry fees, winnings, and rewards all in kudoken.</p>
+      </div>
+    </div>
+    <div class="contract">
+      <div>
+        <div class="sec-kicker" style="margin-bottom:6px">TOKEN CONTRACT</div>
+        <code>0x09851dd4760a8ed111f850affb38b10f84e80c8a</code>
+      </div>
+      <div class="row">
+        <a class="mini" href="https://etherscan.io/token/0x09851dd4760a8ed111f850affb38b10f84e80c8a" target="_blank" rel="noopener">Etherscan</a>
+        <a class="mini" href="https://app.uniswap.org/" target="_blank" rel="noopener">Uniswap</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="philanthropy" style="background:var(--bg2)">
+  <div class="wrap">
+    <div class="sec-kicker">GIVING BACK IS CORE</div>
+    <h2>Philanthropy, <span class="grad">built in</span></h2>
+    <p class="lede">Kudoken's mechanics fund what matters: animal sanctuaries and environmental causes. Stake kudokens and a monthly allocation flows to participating sanctuaries — they use it toward their mission, the staker's position stays protected. The ecosystem grows, the animals eat.</p>
+    <div class="grid c2">
+      <div class="card">
+        <div class="n">🐾</div>
+        <h3>Sanctuary staking</h3>
+        <p>Stake for set periods and tokens flow monthly to the sanctuary you back — direct support, on-chain, no middlemen.</p>
+      </div>
+      <div class="card">
+        <div class="n">🌱</div>
+        <h3>Environmental causes</h3>
+        <p>Community-driven efforts for sustainability and conservation, funded by the same mechanics that reward players.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap">
+    <div class="sec-kicker">QUESTIONS</div>
+    <h2>FAQ</h2>
+    <div class="faq">
+      <details>
+        <summary>What is Kudoken, really?</summary>
+        <p>A utility token on Ethereum (ERC-20) that powers a rewards ecosystem: earn it by participating — games, programs, partner businesses — and spend it across the Outlet Mall, Biorama, and games. It's built for using, not just holding.</p>
+      </details>
+      <details>
+        <summary>How do I get kudokens?</summary>
+        <p>Three ways: earn them playing games like Monkey Jockey and Fly Hawaiʻi Island, buy them on Uniswap, or — if you're a business — get a free starter chunk when you onboard to accept them.</p>
+      </details>
+      <details>
+        <summary>Where can I spend them?</summary>
+        <p>Across the universe: the Outlet Mall, Biorama bowls, in-game purchases and rewards, and participating partner businesses. The partner list keeps growing.</p>
+      </details>
+      <details>
+        <summary>Is Kudoken an investment?</summary>
+        <p>Kudoken is a utility token — it's designed to be earned and spent inside an ecosystem. Nothing here is financial advice, and no returns are promised. Play, earn, spend.</p>
+      </details>
+      <details>
+        <summary>I'm a business. How do I accept Kudoken?</summary>
+        <p>Onboarding businesses receive a free starter chunk of kudokens to get going. Reach out and we'll walk you through accepting them — your customers earn, you get discovered.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<div class="big-cta">
+  <div class="wrap">
+    <h2>Play. Earn. <span class="grad">Spend.</span></h2>
+    <a href="https://app.uniswap.org/" target="_blank" rel="noopener" style="color:var(--amber);font-weight:700;text-decoration:none">Get Kudoken</a>
+    <p style="margin-top:18px;color:var(--amber);font-weight:700;letter-spacing:.06em">#EnergyIsCurrency</p>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div class="logo" style="margin-bottom:6px">KUDO<span>KEN</span></div>
+    <div class="fl">
+      <a href="https://etherscan.io/token/0x09851dd4760a8ed111f850affb38b10f84e80c8a" target="_blank" rel="noopener">Etherscan</a>
+      <a href="https://app.uniswap.org/" target="_blank" rel="noopener">Uniswap</a>
+      <a href="https://web.archive.org/web/20221203163118/https://kudoken.io/" target="_blank" rel="noopener">Original 2021 site (archive)</a>
+    </div>
+    <p>© 2026 Kudoken. Play, earn, spend. Nothing here is financial advice.</p>
+  </div>
+</footer>
+
+</body>
+</html>
