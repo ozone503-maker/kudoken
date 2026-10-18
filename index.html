@@ -1,304 +1,565 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kudoken — Play. Earn. Spend. #EnergyIsCurrency</title>
-<meta name="description" content="Kudoken is the utility token for Jessie's universe: earn it playing games, spend it across the Outlet Mall, Biorama, and beyond. Play, earn, spend. #EnergyIsCurrency">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kudoken (KDU) | Energy is currency</title>
+<meta name="description" content="Kudoken (KDU) is a fixed-supply ERC-20 token on Ethereum, launched in 2021 by Jessie Sponberg and Gabriel Rogers. The unofficial token of galactivism. #EnergyIsCurrency">
+<meta property="og:title" content="Kudoken (KDU) | Energy is currency">
+<meta property="og:description" content="The unofficial token of galactivism. 1,000,000,000 fixed supply on Ethereum. No mint, no tax, no admin.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#f1e8d8">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="preload" href="fonts/bss-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/hk-latin.woff2" as="font" type="font/woff2" crossorigin>
 <style>
+/* Fonts are self-hosted (SIL Open Font License). No third-party requests on this page. */
+@font-face{font-family:"Big Shoulders Stencil";src:url(fonts/bss-latin.woff2) format("woff2");font-weight:600 900;font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Big Shoulders Stencil";src:url(fonts/bss-latin-ext.woff2) format("woff2");font-weight:600 900;font-display:swap;unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:"Hanken Grotesk";src:url(fonts/hk-latin.woff2) format("woff2");font-weight:400 800;font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Hanken Grotesk";src:url(fonts/hk-latin-ext.woff2) format("woff2");font-weight:400 800;font-display:swap;unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF}
+
 :root{
-  --bg:#07070d; --bg2:#0d0d17; --card:#12121e;
-  --cream:#f3ecdc; --muted:#a8a29a;
-  --blue1:#3b82f6; --blue2:#7dd3fc; --amber:#fcae4c;
+  /* Sand, sea and the four glass coins */
+  --sand:#f1e8d8; --sand-2:#e7dbc4; --shell:#fbf7ef;
+  --ink:#10293a; --ink-2:#1b3a4f; --muted:#5b6670;
+  --steel:#386b86;   /* the Kudoken wordmark */
+  --comet:#7fd0f2;   /* the comet K */
+  --fire:#b8381f; --water:#2348c4; --air:#2f8fa3; --earth:#55703f;
+  --display:"Big Shoulders Stencil",Impact,"Arial Narrow",sans-serif;
+  --body:"Hanken Grotesk",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  --r:18px;
 }
-*{margin:0;padding:0;box-sizing:border-box}
-body{background:var(--bg);color:var(--cream);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
-.grad{background:linear-gradient(100deg,var(--blue1),var(--blue2));-webkit-background-clip:text;background-clip:text;color:transparent}
-.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{background:var(--sand);color:var(--ink);font:400 1.0625rem/1.6 var(--body);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+.wrap{width:min(1160px,100% - 40px);margin-inline:auto}
+.balance{text-wrap:balance}
+br.m{display:none}
+@media(max-width:699px){br.m{display:inline}}
+.nowrap{white-space:nowrap}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+:focus-visible{outline:3px solid var(--water);outline-offset:3px;border-radius:6px}
+
+/* headlines: stencil caps, broken by hand with <br>, never a period */
+h1,h2,h3{font-family:var(--display);font-weight:900;text-transform:uppercase;line-height:.9;letter-spacing:.005em}
+h2{font-size:clamp(2.7rem,9vw,5.6rem);margin-bottom:.35em}
+h3{font-size:clamp(1.6rem,4.5vw,2.1rem);line-height:.95;margin-bottom:.35em}
+.ember{color:var(--fire)}
+p+p{margin-top:.9em}
+.lede{font-size:clamp(1.1rem,2.4vw,1.3rem);max-width:36em;color:var(--ink-2)}
+
+/* the four coin dots, used as the site's mark of rhythm */
+.coins4{display:inline-flex;gap:6px;vertical-align:middle}
+.coins4 i{width:12px;height:12px;border-radius:50%;display:block;box-shadow:inset -2px -2px 0 rgba(0,0,0,.18),inset 2px 2px 0 rgba(255,255,255,.35)}
+.coins4 i:nth-child(1){background:var(--fire)}.coins4 i:nth-child(2){background:var(--water)}
+.coins4 i:nth-child(3){background:var(--air)}.coins4 i:nth-child(4){background:var(--earth)}
+
+/* buttons */
+.btn{white-space:nowrap;display:inline-flex;align-items:center;justify-content:center;gap:.55em;min-height:52px;padding:0 1.5em;border-radius:999px;border:2px solid var(--ink);background:var(--ink);color:var(--shell);font:700 1.02rem/1 var(--body);text-decoration:none;cursor:pointer;transition:transform .15s ease,background .15s ease,color .15s ease}
+.btn:hover{transform:translateY(-2px);background:var(--water);border-color:var(--water)}
+.btn.buy{background:var(--fire);border-color:var(--fire)}
+.btn.buy:hover{background:#9a2c16;border-color:#9a2c16}
+.btn.line{background:transparent;color:var(--ink)}
+.btn.line:hover{background:var(--ink);color:var(--shell);border-color:var(--ink)}
+.btn.sm{min-height:42px;padding:0 1.1em;font-size:.95rem}
+.btn svg{width:1.05em;height:1.05em;flex:none}
+.btn[disabled]{opacity:.55;cursor:not-allowed;transform:none;background:transparent;color:var(--ink);border-style:dashed}
+
 /* nav */
-nav{position:sticky;top:0;z-index:50;background:rgba(7,7,13,.88);backdrop-filter:blur(10px);border-bottom:1px solid #1e1e2e}
-nav .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
-.logo{font-weight:800;font-size:1.25rem;letter-spacing:.08em}
-.logo span{color:var(--amber)}
-.navlinks{display:none;gap:26px}
-.navlinks a{color:var(--muted);text-decoration:none;font-size:.92rem}
-.navlinks a:hover{color:var(--cream)}
-.btn{display:inline-block;background:linear-gradient(100deg,var(--blue1),var(--blue2));color:#06121f;font-weight:700;text-decoration:none;padding:12px 28px;border-radius:999px;font-size:1rem;border:none;cursor:pointer}
-.btn:hover{filter:brightness(1.12)}
-.btn.ghost{background:transparent;color:var(--cream);border:1px solid #2c2c40}
-@media(min-width:760px){.navlinks{display:flex}}
-/* hero */
-.hero{position:relative;text-align:center;padding:110px 20px 90px;background:#07070d;overflow:hidden}
-.hero .bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 65%}
-.hero .shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(7,7,13,.42) 0%,rgba(7,7,13,.22) 45%,rgba(7,7,13,.78) 100%)}
-.hero .inner{position:relative;z-index:2}
-.hero .kicker{color:var(--amber);letter-spacing:.28em;font-size:.8rem;font-weight:700;margin-bottom:18px;text-shadow:0 2px 12px rgba(0,0,0,.6)}
-.hero h1{font-size:clamp(3rem,10vw,6.5rem);font-weight:900;letter-spacing:.02em;line-height:1.02;text-shadow:0 4px 24px rgba(0,0,0,.55)}
-.hero p.sub{color:#e8e2d4;font-size:1.15rem;max-width:620px;margin:22px auto 0;text-shadow:0 2px 10px rgba(0,0,0,.7)}
-.hero p.tag{margin-top:14px;color:var(--amber);font-weight:700;letter-spacing:.06em;text-shadow:0 2px 10px rgba(0,0,0,.7)}
-.hero .cta{margin-top:34px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
-.badges{margin-top:26px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
-.badge{font-size:.78rem;color:#e8e2d4;border:1px solid rgba(255,255,255,.28);background:rgba(7,7,13,.45);padding:5px 14px;border-radius:999px}
+.nav{position:sticky;top:0;z-index:40;background:rgba(241,232,216,.92);backdrop-filter:saturate(1.4) blur(10px);-webkit-backdrop-filter:saturate(1.4) blur(10px);border-bottom:1px solid rgba(16,41,58,.12)}
+.nav .wrap{display:flex;align-items:center;gap:14px;height:64px}
+.brand{display:flex;align-items:center;gap:8px;text-decoration:none;margin-right:auto}
+.brand img{width:44px;height:auto}
+.brand span{font:900 1.6rem/1 var(--display);text-transform:uppercase;color:var(--steel);letter-spacing:.01em}
+.nav .links{display:none;gap:22px}
+.nav .links a{text-decoration:none;font-weight:600;font-size:.98rem;color:var(--ink-2)}
+.nav .links a:hover{color:var(--fire)}
+.wallet-slot .btn{min-height:42px;font-size:.9rem;padding:0 1em}
+.wallet-slot .soon{font-weight:500;opacity:.8}
+.wallet-slot .full{display:none}
+@media(min-width:600px){.wallet-slot .full{display:inline}.wallet-slot .short{display:none}}
+@media(max-width:439px){.nav .wrap{gap:8px}.brand img{width:36px}.brand span{font-size:1.35rem}.wallet-slot .btn{padding:0 .8em;font-size:.85rem;min-height:38px}.nav .btn.buy.sm{padding:0 .9em;min-height:38px;font-size:.9rem}}
+@media(min-width:980px){.nav .links{display:flex;margin-right:8px}}
+
+/* hero: honu on lava rock as the background, copy kept clear of the main turtle */
+.hero{position:relative;display:grid;background:var(--ink);color:var(--shell);overflow:hidden}
+.hero-media{grid-area:1/1;position:relative}
+.hero-media img{width:100%;height:auto}
+.hero-media::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,26,38,.82) 0%,rgba(8,26,38,.45) 30%,rgba(8,26,38,0) 48%,rgba(8,26,38,0) 88%,var(--ink) 100%)}
+.hero-copy{display:contents}
+.hero h1{grid-area:1/1;align-self:start;position:relative;z-index:2;padding:26px 20px 0;font-size:clamp(3.6rem,17vw,9.6rem);line-height:.82;color:var(--shell);text-shadow:0 2px 24px rgba(0,0,0,.35)}
+.hero h1 .ember{display:block;color:#ff8a63}
+.hero .after{position:relative;z-index:2;padding:6px 20px 46px}
+.hero .tagline{font-size:clamp(1.12rem,2.6vw,1.35rem);line-height:1.45;max-width:30em;color:#e3eaee}
+.hero .tagline strong{font-weight:800;color:var(--shell)}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.hero .btn.line{color:var(--shell);border-color:rgba(255,255,255,.6)}
+.hero .btn.line:hover{background:var(--shell);color:var(--ink);border-color:var(--shell)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px;list-style:none}
+.chips li{border:1.5px solid rgba(16,41,58,.25);border-radius:999px;padding:6px 14px;font-weight:600;font-size:.92rem;background:var(--shell);color:var(--ink)}
+@media(min-width:900px){
+  .hero{display:block;min-height:min(800px,calc(100svh - 64px))}
+  .hero-media{position:absolute;inset:0}
+  /* scale from the left edge so the main honu slides right, out from under the copy */
+  .hero-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 72%;transform:scale(1.22);transform-origin:0% 72%}
+  .hero-media::after{background:linear-gradient(90deg,rgba(8,26,38,.86) 0%,rgba(8,26,38,.7) 30%,rgba(8,26,38,.25) 46%,rgba(8,26,38,0) 56%)}
+  .hero-copy{display:flex;flex-direction:column;justify-content:center;position:relative;z-index:2;min-height:inherit;width:min(560px,46vw);padding:60px 0 60px max(28px,calc((100vw - 1160px)/2))}
+  .hero h1{padding:0;font-size:clamp(5rem,7.4vw,7rem)}
+  .hero .after{padding:0;margin-top:24px}
+}
 /* sections */
-section{padding:64px 0}
-.sec-kicker{color:var(--amber);letter-spacing:.24em;font-size:.78rem;font-weight:700;margin-bottom:12px}
-h2{font-size:clamp(1.8rem,5vw,2.8rem);font-weight:800;margin-bottom:14px;line-height:1.15}
-.lede{color:var(--muted);max-width:640px;font-size:1.05rem}
-/* cards */
-.grid{display:grid;gap:18px;margin-top:34px}
-@media(min-width:760px){.grid.c3{grid-template-columns:repeat(3,1fr)}.grid.c2{grid-template-columns:repeat(2,1fr)}}
-.card{background:var(--card);border:1px solid #1e1e30;border-radius:16px;padding:28px}
-.card .n{font-size:.78rem;color:var(--amber);font-weight:700;letter-spacing:.18em;margin-bottom:10px}
-.card h3{font-size:1.25rem;margin-bottom:8px}
-.card p{color:var(--muted);font-size:.96rem}
-.card .go{display:inline-block;margin-top:14px;color:var(--blue2);text-decoration:none;font-weight:600;font-size:.95rem}
-/* contract */
-.contract{background:var(--bg2);border:1px solid #1e1e30;border-radius:16px;padding:28px;margin-top:34px;display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between}
-.contract code{font-family:ui-monospace,Menlo,monospace;font-size:.82rem;color:var(--blue2);word-break:break-all}
-.contract .row{display:flex;gap:10px;flex-wrap:wrap}
-.mini{background:#1a1a2c;color:var(--cream);border:1px solid #2c2c44;padding:9px 18px;border-radius:999px;text-decoration:none;font-size:.88rem;font-weight:600}
+section{padding:clamp(64px,10vw,120px) 0}
+.dark{background:var(--ink);color:var(--shell)}
+.dark .lede,.dark p{color:#d6dde2}
+.dark h2,.dark h3{color:var(--shell)}
+.dark .ember{color:#ff7a54}
+.shell{background:var(--shell)}
+
+/* token */
+.token-grid{display:grid;gap:28px;margin-top:40px}
+@media(min-width:900px){.token-grid{grid-template-columns:.9fr 1.2fr;gap:40px}.addr code{font-size:.84rem}}
+.facts{display:grid;grid-template-columns:1fr 1fr;border-top:2px solid var(--ink)}
+.facts div{padding:16px 0;border-bottom:1px solid rgba(16,41,58,.18)}
+.facts div:nth-child(odd){padding-right:14px}
+.facts dt{color:var(--muted);font-size:.95rem}
+.facts dd{font-family:var(--display);font-weight:800;font-size:clamp(1.6rem,4vw,2.1rem);line-height:1;margin-top:4px;text-transform:uppercase}
+.facts .wide{grid-column:1/-1}
+.facts dd small{font-family:var(--body);font-weight:500;font-size:.95rem;text-transform:none;color:var(--muted);display:block;margin-top:6px;line-height:1.4}
+.contract{background:var(--ink);color:var(--shell);border-radius:var(--r);padding:clamp(22px,4vw,34px);display:flex;flex-direction:column;gap:18px}
+.contract h3{color:var(--shell)}
+.addr{display:flex;flex-direction:column;gap:10px}
+.addr label{font-weight:600;color:#b9c7d0;font-size:.95rem}
+.addr .row{display:flex;gap:8px;align-items:stretch}
+.addr code{flex:1;min-width:0;font:500 clamp(.8rem,2.6vw,.98rem)/1.4 var(--mono);background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.16);border-radius:12px;padding:12px 14px;word-break:break-all;color:var(--comet)}
+.copy{flex:none;min-width:92px;border-radius:12px;border:2px solid var(--comet);background:transparent;color:var(--comet);font:700 .95rem/1 var(--body);cursor:pointer;padding:0 14px}
+.copy:hover{background:var(--comet);color:var(--ink)}
+.copy.done{background:var(--comet);color:var(--ink)}
+.contract .links{display:flex;flex-wrap:wrap;gap:10px}
+.contract .btn.line{color:var(--shell);border-color:rgba(255,255,255,.45)}
+.contract .btn.line:hover{background:var(--shell);color:var(--ink)}
+.contract .note{font-size:.95rem;color:#b9c7d0}
+
+/* coins */
+.coins-grid{display:grid;gap:18px;margin-top:40px}
+.coins-grid figure{border-radius:var(--r);overflow:hidden;background:#0c2030}
+.coins-grid img{width:100%;height:100%;object-fit:cover}
+@media(min-width:900px){.coins-grid{grid-template-columns:1.4fr 1fr}.coins-grid figure:first-child{grid-row:span 2}}
+.elements{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;align-content:start}
+.el{border-radius:14px;padding:18px;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.04)}
+.el b{font:900 1.7rem/1 var(--display);text-transform:uppercase;display:flex;align-items:center;gap:10px}
+.el b::before{content:"";width:18px;height:18px;border-radius:50%;background:var(--c);box-shadow:inset -3px -3px 0 rgba(0,0,0,.25),inset 3px 3px 0 rgba(255,255,255,.3)}
+.el.fire{--c:var(--fire)}.el.water{--c:var(--water)}.el.air{--c:var(--air)}.el.earth{--c:var(--earth)}
+
+.strip{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;padding:34px 20px 8px;margin-top:10px;scrollbar-width:thin}
+.strip figure{flex:none;scroll-snap-align:center;width:min(78vw,380px)}
+.strip img{border-radius:14px;aspect-ratio:4/3.3;object-fit:cover;width:100%}
+.strip figcaption{font-size:.92rem;color:#b9c7d0;margin-top:8px}
+@media(min-width:900px){.strip{padding-left:max(20px,calc((100vw - 1160px)/2))}}
+
+/* universe */
+.status-legend{display:flex;flex-wrap:wrap;gap:16px;margin-top:22px;font-weight:600}
+.pill{display:inline-flex;align-items:center;gap:7px;border-radius:999px;padding:4px 12px;font-size:.88rem;font-weight:700;line-height:1.4}
+.pill::before{content:"";width:8px;height:8px;border-radius:50%;background:currentColor}
+.pill.live{background:#dcebd2;color:#2f5a1f}
+.pill.dev{background:#f5dcc9;color:#8a3415}
+.uni{display:grid;gap:16px;margin-top:38px}
+@media(min-width:700px){.uni{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1000px){.uni{grid-template-columns:repeat(3,1fr)}}
+.card{background:var(--shell);border-radius:var(--r);padding:24px;border:1px solid rgba(16,41,58,.1);display:flex;flex-direction:column;gap:10px}
+.card h3{margin:6px 0 0}
+.card p{color:var(--ink-2)}
+.card a.more{margin-top:auto;padding-top:6px;font-weight:700;color:var(--water);text-decoration:none}
+.card a.more:hover{text-decoration:underline}
+.card.live{background:var(--ink);color:var(--shell)}
+.card.live p{color:#d6dde2}
+.card.live h3{color:var(--shell)}
+.card.live .btn{align-self:flex-start;margin-top:auto}
+.family{margin-top:46px;display:flex;flex-wrap:wrap;gap:10px 22px;align-items:center;font-weight:600}
+.family a{color:var(--ink-2);text-decoration-color:var(--fire);text-underline-offset:4px}
+
+/* galactivism */
+.galact h2{font-size:clamp(2.7rem,6.2vw,4.8rem)}
+.galact{display:grid;gap:36px;align-items:center}
+@media(min-width:900px){.galact{grid-template-columns:1.1fr 1fr;gap:64px}}
+blockquote.big{font:900 clamp(3rem,10vw,6.4rem)/.86 var(--display);text-transform:uppercase;color:var(--shell)}
+blockquote.big span{color:var(--comet)}
+blockquote.big + p{margin-top:18px;font-size:.98rem;color:#b9c7d0}
+.galact .btn.line{color:var(--shell);border-color:rgba(255,255,255,.45)}
+.galact .btn.line:hover{background:var(--shell);color:var(--ink)}
+
+.lagoon{border-radius:var(--r);overflow:hidden;margin-bottom:30px;aspect-ratio:16/10}
+.lagoon img{width:100%;height:100%;object-fit:cover;object-position:50% 60%}
+
+/* culture */
+.vault{display:grid;gap:16px;margin-top:40px;grid-template-columns:1fr 1fr}
+.vault figure{border-radius:var(--r);overflow:hidden;background:var(--ink);position:relative;margin:0}
+.vault img{width:100%;height:100%;object-fit:cover}
+.vault figcaption{position:absolute;left:10px;bottom:10px;right:10px;background:rgba(251,247,239,.94);border-radius:10px;padding:8px 12px;font-size:.88rem;font-weight:600;line-height:1.35}
+.vault .shinobi{grid-column:1/-1;aspect-ratio:16/9}
+.vault .hooded,.vault .goodluck,.vault .poster,.vault .surfer{aspect-ratio:4/5}
+.vault .poster img{object-position:50% 20%}
+.vault .quote{background:var(--fire);color:var(--shell);border-radius:var(--r);padding:clamp(22px,3vw,34px);display:flex;flex-direction:column;justify-content:center;grid-column:1/-1}
+.vault .quote p{font:900 clamp(2.8rem,6vw,3.6rem)/.86 var(--display);text-transform:uppercase}
+.vault .quote small{display:block;margin-top:14px;font-size:.95rem;opacity:.92}
+@media(max-width:899px){.vault .quote p br:nth-of-type(odd){display:none}}
+@media(min-width:900px){
+  .vault{grid-template-columns:repeat(4,1fr);grid-auto-rows:230px}
+  .vault figure,.vault .quote{aspect-ratio:auto !important}
+  .vault .shinobi{grid-column:1/4;grid-row:1/3}
+  .vault .poster{grid-column:4;grid-row:1/3}
+  .vault .hooded{grid-column:1;grid-row:3/5}
+  .vault .goodluck{grid-column:2;grid-row:3/5}
+  .vault .surfer{grid-column:3;grid-row:3/5}
+  .vault .quote{grid-column:4;grid-row:3/5}
+}
+
 /* faq */
-.faq{margin-top:30px}
-.faq details{background:var(--card);border:1px solid #1e1e30;border-radius:12px;margin-bottom:12px;padding:18px 22px}
-.faq summary{font-weight:700;cursor:pointer;font-size:1.02rem}
-.faq summary::marker{color:var(--amber)}
-.faq p{color:var(--muted);margin-top:10px;font-size:.96rem}
-/* lifestyle strip */
-.strip{display:flex;gap:12px;overflow-x:auto;padding:10px 20px 26px;scroll-snap-type:x mandatory}
-.strip img{height:220px;border-radius:14px;scroll-snap-align:start;flex-shrink:0;border:1px solid #1e1e30}
-@media(min-width:760px){.strip img{height:280px}}
-/* feature */
-.feature{display:grid;gap:22px;margin-top:34px;align-items:center}
-@media(min-width:760px){.feature{grid-template-columns:1fr 1fr}}
-.feature img{width:100%;border-radius:18px;border:1px solid #1e1e30}
-.feature h3{font-size:1.5rem;margin-bottom:10px}
-.feature p{color:var(--muted)}
-/* footer */
-footer{border-top:1px solid #1e1e2e;padding:40px 0 56px;text-align:center;color:var(--muted);font-size:.88rem}
-footer .fl{display:flex;gap:20px;justify-content:center;margin:16px 0;flex-wrap:wrap}
-footer a{color:var(--blue2);text-decoration:none}
-.big-cta{text-align:center;padding:40px 20px 80px}
-.big-cta h2{margin-bottom:20px}
+.faq{max-width:820px;margin-top:34px}
+.faq details{border-top:1.5px solid rgba(16,41,58,.2);padding:18px 0}
+.faq details:last-child{border-bottom:1.5px solid rgba(16,41,58,.2)}
+.faq summary{cursor:pointer;font-weight:800;font-size:1.12rem;list-style:none;display:flex;justify-content:space-between;gap:16px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font:900 1.7rem/1 var(--display);color:var(--fire);transition:transform .2s}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq details p{margin-top:10px;color:var(--ink-2);max-width:44em}
+
+/* closing */
+.closing{text-align:center;background:var(--sand-2)}
+.closing h2{font-size:clamp(3rem,11vw,7rem)}
+.closing .cta{justify-content:center}
+.closing .tag{margin-top:22px;font:800 1.5rem/1 var(--display);color:var(--steel);text-transform:uppercase}
+
+footer{background:var(--ink);color:#c9d3d9;padding:56px 0 64px;font-size:.95rem}
+footer .top{display:flex;flex-wrap:wrap;gap:24px 48px;justify-content:space-between;align-items:flex-start}
+footer .brand span{color:var(--comet)}
+footer .brand img{background:var(--shell);border-radius:10px;padding:4px}
+footer nav{display:flex;flex-wrap:wrap;gap:10px 22px}
+footer nav a{color:#e8eef1;text-decoration-color:rgba(255,255,255,.3);text-underline-offset:4px}
+footer .fine{margin-top:34px;max-width:52em;color:#9fb0bb}
+
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn,.faq summary::after{transition:none}}
 </style>
 </head>
 <body>
 
-<nav>
+<header class="nav">
   <div class="wrap">
-    <div class="logo">KUDO<span>KEN</span></div>
-    <div class="navlinks">
-      <a href="#lifestyle">Lifestyle</a>
-      <a href="#culture">Culture</a>
-      <a href="#ecosystem">Ecosystem</a>
-      <a href="#get">Get Kudoken</a>
+    <a class="brand" href="#top" aria-label="Kudoken home">
+      <img src="images/mark.png" width="242" height="170" alt="">
+      <span>Kudoken</span>
+    </a>
+    <nav class="links" aria-label="Sections">
+      <a href="#token">Token</a>
+      <a href="#coins">Coins</a>
+      <a href="#universe">Universe</a>
+      <a href="#galactivism">Galactivism</a>
       <a href="#faq">FAQ</a>
+    </nav>
+    <!--
+      WALLET SLOT
+      The system-wide wallet widget mounts here. Replace the contents of
+      #kdu-wallet (or target [data-wallet-slot]) with the widget's button.
+      Nothing on this page reads or requests a wallet today.
+    -->
+    <div id="kdu-wallet" class="wallet-slot" data-wallet-slot>
+      <button class="btn line" type="button" disabled aria-disabled="true" title="Wallet connection is coming soon">
+        <span class="full">Connect wallet <span class="soon">(soon)</span></span>
+        <span class="short">Wallet</span>
+      </button>
     </div>
-    <a href="https://app.uniswap.org/" target="_blank" rel="noopener" style="color:var(--amber);font-weight:700;text-decoration:none">Get Kudoken</a>
-  </div>
-</nav>
-
-<header class="hero">
-  <img class="bg" src="images/hero-beach.jpg" alt="">
-  <div class="shade"></div>
-  <div class="inner">
-  <div class="kicker">THE UNOFFICIAL TOKEN OF GALACTIVISM</div>
-  <h1><span class="grad">KUDOKEN</span></h1>
-  <p class="sub">Play games. Earn tokens. Spend them across a real universe — the Outlet Mall, Biorama, and the games themselves.</p>
-  <p class="tag">#EnergyIsCurrency</p>
-  <div class="cta">
-    <a href="https://app.uniswap.org/" target="_blank" rel="noopener" style="color:var(--amber);font-weight:700;text-decoration:none">Get Kudoken</a>
-  </div>
-  <p style="margin-top:18px"><a href="#ecosystem" style="color:var(--cream);font-weight:600;text-decoration:none;border-bottom:1px solid var(--amber);padding-bottom:2px">How it works ↓</a></p>
+    <a class="btn buy sm" href="https://app.uniswap.org/swap?chain=mainnet&outputCurrency=0x09851dD4760a8ed111f850affb38B10f84e80C8A" target="_blank" rel="noopener">Buy KDU</a>
   </div>
 </header>
 
-<section id="lifestyle" style="padding-bottom:20px">
-  <div class="wrap">
-    <div class="sec-kicker">THE LIFESTYLE</div>
-    <h2>Real coins. Real places. <span class="grad">Real life.</span></h2>
+<main id="top">
+
+<section class="hero" style="padding:0" aria-labelledby="hero-title">
+  <div class="hero-media">
+    <picture>
+      <source media="(max-width: 899px)" type="image/webp" srcset="images/hero-honu-portrait.webp">
+      <source media="(max-width: 899px)" srcset="images/hero-honu-portrait.jpg">
+      <source type="image/webp" srcset="images/hero-honu-1100.webp 1100w, images/hero-honu.webp 2000w" sizes="122vw">
+      <img src="images/hero-honu.jpg" srcset="images/hero-honu-1100.jpg 1100w, images/hero-honu.jpg 2000w" sizes="122vw" width="2000" height="1126" fetchpriority="high"
+        alt="Hawaiian green sea turtles resting on lava rock in clear, shallow water, seen from above">
+    </picture>
   </div>
-  <div class="strip" style="margin-top:28px">
-    <img src="images/beach-2.jpg" alt="Kudoken coins in the sand">
-    <img src="images/beach-3.jpg" alt="Kudoken coins at the shoreline">
-    <img src="images/beach-4.jpg" alt="Kudoken coins close up on sand">
-    <img src="images/beach-5.jpg" alt="Kudoken coins with the ocean behind">
-    <img src="images/surfer.jpg" alt="Kudoken surf culture">
+  <div class="hero-copy">
+    <h1 id="hero-title">Energy<br><span class="ember">is currency</span></h1>
+    <div class="after">
+      <p class="tagline"><strong>Kudoken is the unofficial<br class="m"> token of galactivism.</strong><br>
+        A fixed-supply token on Ethereum,<br>
+        started in 2021 by Jessie Sponberg<br>and Gabriel Rogers.</p>
+      <div class="cta">
+        <a class="btn buy" href="https://app.uniswap.org/swap?chain=mainnet&outputCurrency=0x09851dD4760a8ed111f850affb38B10f84e80C8A" target="_blank" rel="noopener">
+          Buy KDU on Uniswap
+          <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M7 4h9v9M16 4 4 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a class="btn line" href="#token">Check the contract</a>
+      </div>
+      <ul class="chips" aria-label="Key facts">
+        <li>KDU</li>
+        <li>1,000,000,000 fixed supply</li>
+        <li>No mint, no tax, no admin</li>
+      </ul>
+    </div>
   </div>
 </section>
 
-<section id="ecosystem">
+<section id="token" class="shell" aria-labelledby="token-title">
   <div class="wrap">
-    <div class="sec-kicker">THE ECOSYSTEM</div>
-    <h2>What is <span class="grad">Kudoken?</span></h2>
-    <p class="lede">Kudoken is a blockchain ecosystem that rewards community participation. Interact with first-party and partner programs, earn tokens, then decide how to use them — spend them, stake them, redeem them for rewards, or trade them. As the network of partners grows, the ways to earn and spend keep growing with it.</p>
-    <div class="grid c3">
-      <div class="card">
-        <h3>Play</h3>
-        <p>Race in Monkey Jockey. Fly Hawaiʻi Island. Games feed kudokens straight into your wallet — winning pays.</p>
-      </div>
-      <div class="card">
-        <h3>Earn</h3>
-        <p>Businesses get a free starter chunk to onboard. Participants earn through programs, events, and community rewards.</p>
-      </div>
-      <div class="card">
-        <h3>Spend</h3>
-        <p>One wallet, everywhere: the Outlet Mall, Biorama bowls, games, partner businesses. Real spending, not speculation.</p>
+    <h2 id="token-title">Nothing up<br>the sleeve</h2>
+    <p class="lede balance">The Kudoken contract is verified on Etherscan and has no mint, no tax and no admin functions. One billion tokens were created once. Nobody can print more, skim your trades or freeze your wallet.</p>
+
+    <div class="token-grid">
+      <dl class="facts">
+        <div><dt>Ticker</dt><dd>KDU</dd></div>
+        <div><dt>Network</dt><dd>Ethereum<small>ERC-20 standard</small></dd></div>
+        <div><dt>Total supply</dt><dd>1,000,000,000<small>Fixed forever</small></dd></div>
+        <div><dt>Decimals</dt><dd>18</dd></div>
+        <div><dt>Launched</dt><dd>2021<small>By Jessie Sponberg and Gabriel Rogers</small></dd></div>
+        <div><dt>Holders</dt><dd>190<small>On Etherscan, at the time of writing</small></dd></div>
+        <div class="wide"><dt>Where it trades</dt><dd>Uniswap V3<small>One pool: KDU/WETH, 0.3% fee tier</small></dd></div>
+      </dl>
+
+      <div class="contract">
+        <h3>The only<br>real address</h3>
+        <div class="addr">
+          <label for="addr-token">KDU token contract</label>
+          <div class="row">
+            <code id="addr-token">0x09851dD4760a8ed111f850affb38B10f84e80C8A</code>
+            <button class="copy" type="button" data-copy="0x09851dD4760a8ed111f850affb38B10f84e80C8A" aria-describedby="addr-token">Copy</button>
+          </div>
+        </div>
+        <div class="addr">
+          <label for="addr-pool">Uniswap V3 KDU/WETH pool</label>
+          <div class="row">
+            <code id="addr-pool">0x7324ee57E121963DCEd1089661CDfDFc1C11923d</code>
+            <button class="copy" type="button" data-copy="0x7324ee57E121963DCEd1089661CDfDFc1C11923d" aria-describedby="addr-pool">Copy</button>
+          </div>
+        </div>
+        <div class="links">
+          <a class="btn buy sm" href="https://app.uniswap.org/swap?chain=mainnet&outputCurrency=0x09851dD4760a8ed111f850affb38B10f84e80C8A" target="_blank" rel="noopener">Buy KDU</a>
+          <a class="btn line sm" href="https://etherscan.io/token/0x09851dD4760a8ed111f850affb38B10f84e80C8A" target="_blank" rel="noopener">Etherscan</a>
+          <a class="btn line sm" href="https://etherscan.io/address/0x09851dD4760a8ed111f850affb38B10f84e80C8A#code" target="_blank" rel="noopener">Verified code</a>
+          <a class="btn line sm" href="https://app.uniswap.org/explore/pools/ethereum/0x7324ee57E121963DCEd1089661CDfDFc1C11923d" target="_blank" rel="noopener">The pool</a>
+        </div>
+        <p class="note">Anything else calling itself Kudoken is not this token. Match the address before you swap.</p>
       </div>
     </div>
   </div>
 </section>
 
-<section id="culture">
+<section id="coins" class="dark" aria-labelledby="coins-title" style="padding-bottom:clamp(40px,6vw,70px)">
   <div class="wrap">
-    <div class="sec-kicker">THE CULTURE</div>
-    <h2>Not a coin. <span class="grad">A movement.</span></h2>
-    <p class="lede">Kudoken has a face, a mask, and an attitude. This is crypto with a culture — built by players, holders, and believers.</p>
-    <div class="feature">
-      <img src="images/shinobi.jpg" alt="Kudoken Shinobi">
-      <div>
-        <h3>🥷 Kudoken Shinobi</h3>
-        <p>The spirit of the token — silent, sharp, always moving. The Shinobi doesn't chase the market. The market comes to the Shinobi.</p>
-      </div>
-    </div>
-    <div class="feature">
-      <img src="images/goodluck.jpg" alt="They say you can't buy good luck — but you can buy Kudoken">
-      <div>
-        <h3>🍀 Make your own luck</h3>
-        <p>They say you can't buy good luck. But you can buy Kudoken on Uniswap — and luck will find you.</p>
-        <p style="margin-top:16px"><a class="btn" href="https://app.uniswap.org/" target="_blank" rel="noopener">Get Kudoken</a></p>
+    <h2 id="coins-title">Fire, water,<br><span class="ember">air and earth</span></h2>
+    <p class="lede balance">Kudoken has always had a physical side: four glass coins, one for each element. They have spent more time on the beach than most crypto ever will.</p>
+    <div class="coins-grid">
+      <figure><img src="images/coins.jpg" width="900" height="676" loading="lazy" alt="Four glass Kudoken coins, red, cobalt, black and blue, lined up above printed fire, water, air and earth symbols and the Kudoken stencil wordmark"></figure>
+      <figure><img src="images/beach-4.jpg" width="900" height="675" loading="lazy" alt="Close up of the four glass coins fanned out on sand, each pressed with the Kudoken mark"></figure>
+      <div class="elements" aria-label="The four coins">
+        <div class="el fire"><b>Fire</b></div>
+        <div class="el water"><b>Water</b></div>
+        <div class="el air"><b>Air</b></div>
+        <div class="el earth"><b>Earth</b></div>
       </div>
     </div>
   </div>
-</section>
-
-<section id="get" style="background:var(--bg2)">
-  <div class="wrap">
-    <div class="sec-kicker">THREE DOORS IN</div>
-    <h2>Get <span class="grad">Kudoken</span></h2>
-    <p class="lede">Three ways in — pick yours.</p>
-    <div class="grid c3">
-      <div class="card">
-        <h3>🎮 Earn it playing</h3>
-        <p>Monkey Jockey's seeded racing and Fly Hawaiʻi Island pay kudokens to your wallet. Play well, get paid.</p>
-        <a class="go" href="#spend">See the games →</a>
-      </div>
-      <div class="card">
-        <h3>💱 Buy it</h3>
-        <p>Grab kudokens on Uniswap and hold them in any ERC-20 wallet. Then spend them across the universe.</p>
-        <a class="go" href="https://app.uniswap.org/" target="_blank" rel="noopener">Open Uniswap →</a>
-      </div>
-      <div class="card">
-        <h3>🏪 Onboard your business</h3>
-        <p>Local businesses get a free starter chunk of kudokens to begin accepting them. The network grows, your customers grow with it.</p>
-        <a class="go" href="#faq">How onboarding works →</a>
-      </div>
-    </div>
+  <div class="strip" role="region" aria-label="Kudoken coins out in the world" tabindex="0">
+    <figure><img src="images/beach-3.jpg" width="900" height="675" loading="lazy" alt="The four coins in the sand on a busy beach, swimmers in the surf behind"><figcaption>Low tide, high spirits</figcaption></figure>
+    <figure><img src="images/beach-5.jpg" width="900" height="675" loading="lazy" alt="The red coin leading the others across a ridge of sand"><figcaption>Red goes first</figcaption></figure>
+    <figure><img src="images/coins-beach.jpg" width="900" height="675" loading="lazy" alt="The four coins half buried in sand, beachgoers and turquoise water behind"><figcaption>A day at the beach</figcaption></figure>
+    <figure><img src="images/venice.jpg" width="900" height="675" loading="lazy" alt="Gondolas gliding along an indoor canal past cafes and balconies"><figcaption>Taking the token on the road</figcaption></figure>
+    <figure><img src="images/beach-2.jpg" width="900" height="675" loading="lazy" alt="The four coins resting in soft sand, the red coin in front"><figcaption>Sand, glass, energy</figcaption></figure>
   </div>
 </section>
 
-<section id="spend">
+<section id="universe" aria-labelledby="universe-title">
   <div class="wrap">
-    <div class="sec-kicker">ONE WALLET, EVERYWHERE</div>
-    <h2>Where Kudoken <span class="grad">spends</span></h2>
-    <p class="lede">Kudoken is the connective tissue across the whole universe. Earn it in one place, spend it in another.</p>
-    <div class="grid c3">
-      <div class="card">
-        <div class="n">🛍️</div>
-        <h3>Outlet Mall</h3>
-        <p>The hub — shop, discover, and spend kudokens with participating merchants across the mall.</p>
-      </div>
-      <div class="card">
-        <div class="n">🏠</div>
+    <h2 id="universe-title">One token<br>for the whole<br class="m"> family</h2>
+    <p class="lede balance">Kudoken is the shared currency for Jessie Sponberg's universe of projects, from a rescue farm on Kīlauea to games and shops online. Here is exactly where each piece stands today.</p>
+    <div class="status-legend">
+      <span class="pill live">Live now</span>
+      <span class="pill dev">In development, not live yet</span>
+    </div>
+
+    <div class="uni">
+      <article class="card live">
+        <span class="pill live">Live now</span>
+        <h3>KDU on<br>Ethereum</h3>
+        <p>The token is live and trading in one Uniswap V3 pool. Hold it in any Ethereum wallet.</p>
+        <a class="btn buy sm" href="https://app.uniswap.org/swap?chain=mainnet&outputCurrency=0x09851dD4760a8ed111f850affb38B10f84e80C8A" target="_blank" rel="noopener">Buy KDU</a>
+      </article>
+      <article class="card">
+        <span class="pill dev">In development</span>
+        <h3>Monkey<br>Jockey</h3>
+        <p>A mobile racing game starring rescue dogs, where players will win Kudokens. Token payouts are not live yet.</p>
+        <a class="more" href="https://monkeyjockey.space" target="_blank" rel="noopener">monkeyjockey.space</a>
+      </article>
+      <article class="card">
+        <span class="pill dev">In development</span>
+        <h3>Fruity Puppy<br>Outlet Mall</h3>
+        <p>Spending Kudokens at the Outlet Mall is being built. You cannot pay with KDU there yet.</p>
+        <a class="more" href="https://outletmall.space" target="_blank" rel="noopener">outletmall.space</a>
+      </article>
+      <article class="card">
+        <span class="pill dev">In development</span>
         <h3>Biorama</h3>
-        <p>The decentralized social layer. Tip creators, unlock rooms, and move value between bowls.</p>
-      </div>
-      <div class="card">
-        <div class="n">🏁</div>
-        <h3>The Games</h3>
-        <p>Monkey Jockey, Fly Hawaiʻi Island, and what's next — entry fees, winnings, and rewards all in kudoken.</p>
+        <p>Using Kudokens inside Biorama is on the way. Not live yet.</p>
+        <a class="more" href="https://biorama.space" target="_blank" rel="noopener">biorama.space</a>
+      </article>
+      <article class="card">
+        <span class="pill dev">In development</span>
+        <h3>Sanctuary<br>staking</h3>
+        <p>Stake Kudokens to support rescue animals, starting with FlashTown. An idea from the 2021 whitepaper, now being rebuilt. Not live yet.</p>
+        <a class="more" href="#galactivism">Why it matters</a>
+      </article>
+      <article class="card">
+        <span class="pill dev">In development</span>
+        <h3>Starter tokens<br>for businesses</h3>
+        <p>Local businesses will get a starter amount of Kudokens so they can begin accepting them. The program has not launched yet.</p>
+        <a class="more" href="https://web.archive.org/web/20221203163118/https://kudoken.io/" target="_blank" rel="noopener">The 2021 partner idea</a>
+      </article>
+    </div>
+
+    <div class="family" aria-label="The family">
+      <span class="coins4" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+      <a href="https://flashtown.space" target="_blank" rel="noopener">FlashTown</a>
+      <a href="https://www.fruitypuppy.com" target="_blank" rel="noopener">Fruity Puppy</a>
+      <a href="https://brobots.space" target="_blank" rel="noopener">Brobots</a>
+      <a href="https://outletmall.space" target="_blank" rel="noopener">Outlet Mall</a>
+      <a href="https://biorama.space" target="_blank" rel="noopener">Biorama</a>
+      <a href="https://monkeyjockey.space" target="_blank" rel="noopener">Monkey Jockey</a>
+    </div>
+  </div>
+</section>
+
+<section id="galactivism" class="dark" aria-labelledby="galact-title">
+  <div class="wrap galact">
+    <div>
+      <h2 id="galact-title">Galactivism<br><span class="ember">starts at home</span></h2>
+      <p class="lede">The 2021 whitepaper built giving back into the token itself: stake Kudokens and a share goes to animal sanctuaries.</p>
+      <p>That idea is coming home to FlashTown, a rescue farm and sanctuary on Kīlauea that looks after about 25 rescue cats and 5 rescue dogs. Sanctuary staking is in development and is not live yet. When it is, this page will say so.</p>
+      <div class="cta">
+        <a class="btn line" href="https://flashtown.space" target="_blank" rel="noopener">Visit FlashTown</a>
+        <a class="btn line" href="https://github.com/KudokenToken/Kudoken" target="_blank" rel="noopener">Read the whitepaper</a>
       </div>
     </div>
-    <div class="contract">
-      <div>
-        <div class="sec-kicker" style="margin-bottom:6px">TOKEN CONTRACT</div>
-        <code>0x09851dd4760a8ed111f850affb38b10f84e80c8a</code>
-      </div>
-      <div class="row">
-        <a class="mini" href="https://etherscan.io/token/0x09851dd4760a8ed111f850affb38b10f84e80c8a" target="_blank" rel="noopener">Etherscan</a>
-        <a class="mini" href="https://app.uniswap.org/" target="_blank" rel="noopener">Uniswap</a>
+    <div>
+      <figure class="lagoon"><picture><source type="image/webp" srcset="images/lagoon.webp"><img src="images/lagoon.jpg" width="1200" height="900" loading="lazy" alt="Turquoise lagoon edged with black lava rock and ironwood trees"></picture></figure>
+      <blockquote class="big">Spend<br>your energy<br><span>wisely</span></blockquote>
+      <p>From the Kudoken whitepaper, 2021</p>
+    </div>
+  </div>
+</section>
+
+<section id="culture" class="shell" aria-labelledby="culture-title">
+  <div class="wrap">
+    <h2 id="culture-title">Masked up<br>since 2021</h2>
+    <p class="lede balance">The Shinobi, the hooded K and the original kudoken.io poster. Art from the first run, still the face of the token.</p>
+    <div class="vault">
+      <figure class="shinobi"><img src="images/shinobi.jpg" width="1000" height="564" loading="lazy" alt="Comic style Kudoken Shinobi in a gold mask and red scarf, katana over the shoulder, with the comet K logo"><figcaption>Kudoken Shinobi</figcaption></figure>
+      <figure class="hooded"><img src="images/hooded.jpg" width="855" height="855" loading="lazy" alt="A hooded figure in white against red, the comet K logo and Kudoken wordmark where the face should be"><figcaption>The hooded K</figcaption></figure>
+      <figure class="poster"><img src="images/poster.jpg" width="472" height="800" loading="lazy" alt="Turquoise 2021 poster reading kudoken.io, #EnergyIsCurrency, #Kudoken, #KudokenToken, with a silver Kudoken coin"><figcaption>kudoken.io poster, 2021</figcaption></figure>
+      <figure class="goodluck"><img src="images/goodluck.jpg" width="645" height="800" loading="lazy" alt="Instagram post by dailydose_.arts showing the hooded Kudoken artwork under the Kudoken wordmark"><figcaption>Fan post by dailydose_.arts</figcaption></figure>
+      <figure class="surfer"><img src="images/surfer.jpg" width="866" height="900" loading="lazy" alt="Surfer silhouetted beside a longboard under a faded Kudoken wordmark"><figcaption>Surf poster</figcaption></figure>
+      <div class="quote">
+        <p>Play,<br>mine,<br>spend,<br>enjoy</p>
+        <small>The original kudoken.io motto, 2021</small>
       </div>
     </div>
   </div>
 </section>
 
-<section id="philanthropy" style="background:var(--bg2)">
+<section id="faq" aria-labelledby="faq-title">
   <div class="wrap">
-    <div class="sec-kicker">GIVING BACK IS CORE</div>
-    <h2>Philanthropy, <span class="grad">built in</span></h2>
-    <p class="lede">Kudoken's mechanics fund what matters: animal sanctuaries and environmental causes. Stake kudokens and a monthly allocation flows to participating sanctuaries — they use it toward their mission, the staker's position stays protected. The ecosystem grows, the animals eat.</p>
-    <div class="grid c2">
-      <div class="card">
-        <div class="n">🐾</div>
-        <h3>Sanctuary staking</h3>
-        <p>Stake for set periods and tokens flow monthly to the sanctuary you back — direct support, on-chain, no middlemen.</p>
-      </div>
-      <div class="card">
-        <div class="n">🌱</div>
-        <h3>Environmental causes</h3>
-        <p>Community-driven efforts for sustainability and conservation, funded by the same mechanics that reward players.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="faq">
-  <div class="wrap">
-    <div class="sec-kicker">QUESTIONS</div>
-    <h2>FAQ</h2>
+    <h2 id="faq-title">Straight<br>answers</h2>
     <div class="faq">
       <details>
-        <summary>What is Kudoken, really?</summary>
-        <p>A utility token on Ethereum (ERC-20) that powers a rewards ecosystem: earn it by participating — games, programs, partner businesses — and spend it across the Outlet Mall, Biorama, and games. It's built for using, not just holding.</p>
+        <summary>What is Kudoken?</summary>
+        <p>Kudoken (KDU) is an ERC-20 token on Ethereum with a fixed supply of 1,000,000,000. It was launched in 2021 by Jessie Sponberg and Gabriel Rogers as the unofficial token of galactivism, and it is becoming the shared currency for Jessie's projects.</p>
       </details>
       <details>
-        <summary>How do I get kudokens?</summary>
-        <p>Three ways: earn them playing games like Monkey Jockey and Fly Hawaiʻi Island, buy them on Uniswap, or — if you're a business — get a free starter chunk when you onboard to accept them.</p>
+        <summary>How do I buy KDU?</summary>
+        <p>Use the Buy KDU button. It opens Uniswap with the real Kudoken contract already selected. Connect an Ethereum wallet, choose how much ETH to swap, and confirm. There is one pool, so check the price impact Uniswap shows you before you confirm.</p>
       </details>
       <details>
-        <summary>Where can I spend them?</summary>
-        <p>Across the universe: the Outlet Mall, Biorama bowls, in-game purchases and rewards, and participating partner businesses. The partner list keeps growing.</p>
+        <summary>Can anyone make more Kudokens?</summary>
+        <p>No. The verified contract has no mint function, so the supply is fixed at one billion. It also has no transfer tax and no admin controls.</p>
       </details>
       <details>
-        <summary>Is Kudoken an investment?</summary>
-        <p>Kudoken is a utility token — it's designed to be earned and spent inside an ecosystem. Nothing here is financial advice, and no returns are promised. Play, earn, spend.</p>
+        <summary>What does it cost to swap?</summary>
+        <p>The token itself charges nothing. The Uniswap pool has a 0.3% fee that goes to liquidity providers, and Ethereum charges a network gas fee for every transaction.</p>
       </details>
       <details>
-        <summary>I'm a business. How do I accept Kudoken?</summary>
-        <p>Onboarding businesses receive a free starter chunk of kudokens to get going. Reach out and we'll walk you through accepting them — your customers earn, you get discovered.</p>
+        <summary>What can I do with KDU today?</summary>
+        <p>Today you can hold it, send it and trade it. Winning it in Monkey Jockey, spending it at the Outlet Mall or in Biorama, sanctuary staking and business starter tokens are all in development and not live yet.</p>
+      </details>
+      <details>
+        <summary>Is this financial advice?</summary>
+        <p>No. Nothing on this site is financial advice and nobody is promising returns. Crypto prices move and you can lose what you put in. Only use money you are comfortable losing, and do your own research.</p>
       </details>
     </div>
   </div>
 </section>
 
-<div class="big-cta">
+<section class="closing" aria-labelledby="closing-title">
   <div class="wrap">
-    <h2>Play. Earn. <span class="grad">Spend.</span></h2>
-    <a href="https://app.uniswap.org/" target="_blank" rel="noopener" style="color:var(--amber);font-weight:700;text-decoration:none">Get Kudoken</a>
-    <p style="margin-top:18px;color:var(--amber);font-weight:700;letter-spacing:.06em">#EnergyIsCurrency</p>
+    <h2 id="closing-title">Put your energy<br><span class="ember">somewhere<br class="m"> good</span></h2>
+    <div class="cta">
+      <a class="btn buy" href="https://app.uniswap.org/swap?chain=mainnet&outputCurrency=0x09851dD4760a8ed111f850affb38B10f84e80C8A" target="_blank" rel="noopener">Buy KDU on Uniswap</a>
+      <button class="btn line" type="button" data-copy="0x09851dD4760a8ed111f850affb38B10f84e80C8A" data-label="Copy contract address">Copy contract address</button>
+    </div>
+    <p class="tag">#EnergyIsCurrency</p>
   </div>
-</div>
+</section>
+
+</main>
 
 <footer>
   <div class="wrap">
-    <div class="logo" style="margin-bottom:6px">KUDO<span>KEN</span></div>
-    <div class="fl">
-      <a href="https://etherscan.io/token/0x09851dd4760a8ed111f850affb38b10f84e80c8a" target="_blank" rel="noopener">Etherscan</a>
-      <a href="https://app.uniswap.org/" target="_blank" rel="noopener">Uniswap</a>
-      <a href="https://web.archive.org/web/20221203163118/https://kudoken.io/" target="_blank" rel="noopener">Original 2021 site (archive)</a>
+    <div class="top">
+      <a class="brand" href="#top" aria-label="Back to top">
+        <img src="images/mark.png" width="242" height="170" alt="">
+        <span>Kudoken</span>
+      </a>
+      <nav aria-label="Footer">
+        <a href="https://app.uniswap.org/swap?chain=mainnet&outputCurrency=0x09851dD4760a8ed111f850affb38B10f84e80C8A" target="_blank" rel="noopener">Buy on Uniswap</a>
+        <a href="https://etherscan.io/token/0x09851dD4760a8ed111f850affb38B10f84e80C8A" target="_blank" rel="noopener">Etherscan</a>
+        <a href="https://github.com/KudokenToken/Kudoken" target="_blank" rel="noopener">Whitepaper</a>
+        <a href="https://web.archive.org/web/20221203163118/https://kudoken.io/" target="_blank" rel="noopener">The 2021 site</a>
+        <a href="https://flashtown.space" target="_blank" rel="noopener">FlashTown</a>
+      </nav>
     </div>
-    <p>© 2026 Kudoken. Play, earn, spend. Nothing here is financial advice.</p>
+    <p class="fine">Kudoken (KDU) is a cryptocurrency token. Nothing on this site is financial advice. Features marked in development are not live and may change. Contract: 0x09851dD4760a8ed111f850affb38B10f84e80C8A. This site uses no cookies, analytics or trackers.</p>
   </div>
 </footer>
 
+<script>
+// Copy to clipboard for contract and pool addresses. No other script runs on this page.
+document.querySelectorAll('[data-copy]').forEach(function(btn){
+  var label = btn.textContent;
+  btn.addEventListener('click', function(){
+    var text = btn.getAttribute('data-copy');
+    var done = function(){
+      btn.textContent = 'Copied'; btn.classList.add('done');
+      setTimeout(function(){ btn.textContent = label; btn.classList.remove('done'); }, 1800);
+    };
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(text).then(done, fallback);
+    } else { fallback(); }
+    function fallback(){
+      var t = document.createElement('textarea');
+      t.value = text; t.setAttribute('readonly',''); t.style.position='fixed'; t.style.opacity='0';
+      document.body.appendChild(t); t.select();
+      try { document.execCommand('copy'); done(); } catch(e) { btn.textContent = 'Select and copy'; }
+      document.body.removeChild(t);
+    }
+  });
+});
+</script>
 </body>
 </html>

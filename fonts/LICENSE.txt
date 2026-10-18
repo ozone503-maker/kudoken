@@ -1,0 +1,3 @@
+Big Shoulders Stencil (Patric King) and Hanken Grotesk (Alfredo Marco Pradil) are licensed under the SIL Open Font License 1.1.
+https://openfontlicense.org
+Self-hosted copies from Google Fonts, latin and latin-ext subsets.
