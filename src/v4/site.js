@@ -38,12 +38,3 @@ document.querySelectorAll('[data-copy]').forEach(function (btn) {
     });
   });
 })();
-// The wallet card has a soft blue glow baked into its shadow styles. Swap it for violet to match the page.
-if (window.customElements) customElements.whenDefined('kudoken-wallet').then(function () {
-  var w = document.querySelector('kudoken-wallet'); if (!w) return;
-  var tries = 0;
-  (function patch() {
-    if (w.shadowRoot) { var st = document.createElement('style'); st.textContent = '.card:before{background:radial-gradient(circle,rgba(201,168,255,.4),transparent 70%)}'; w.shadowRoot.appendChild(st); }
-    else if (tries++ < 20) setTimeout(patch, 100);
-  })();
-});

@@ -69,7 +69,7 @@ for slug,f,lab,title,desc,cls in PAGES:
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="{SITE}/images/v4/og.jpg">
-<meta name="theme-color" content="#111315">
+<meta name="theme-color" content="#071a2b">
 <link rel="icon" type="image/svg+xml" href="/images/v3/fb-coin.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="/images/v3/fb-32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/images/v3/fb-16.png">
