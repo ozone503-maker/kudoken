@@ -20,9 +20,9 @@ body=re.sub(r'\{\{pc ([^}]+)\}\}',pc,body)
 body=body.replace('{{x}}',X).replace('{{ok}}',OK).replace('{{dots}}',dots).replace('{{BUY}}',BUY).replace('{{newmark}}',NEW).replace('{{fbdefs}}',open('src/fb-defs.html').read()).replace('{{fb}}',open('src/fb-inline.html').read().replace('class="fb"','class="fb mark-fb"',1))
 assert '{{' not in body, re.findall(r'\{\{[^}]*',body)[:3]
 js=open('src/main.js').read()
-headjs='''<script>/* theme preview switch for the themes branch: ?theme=lime|purple&font=unbounded|chakra&mark=new */(function(){var q=new URLSearchParams(location.search),h=document.documentElement;['theme','font','mark'].forEach(function(k){var v=q.get(k);if(v&&/^[a-z]+$/.test(v))h.dataset[k]=v});if(h.dataset.mark==='fireball'){document.write('<link rel="icon" type="image/svg+xml" href="images/v3/fb-coin.svg"><link rel="icon" type="image/png" sizes="32x32" href="images/v3/fb-32.png"><link rel="icon" type="image/png" sizes="16x16" href="images/v3/fb-16.png"><link rel="apple-touch-icon" href="images/v3/fb-180.png">')}})()</script>'''
+headjs='''<script>/* Default is the electric blue theme. Optional preview switch: ?theme=lime|purple|blue&font=unbounded|chakra&mark=new|fireball */(function(){var q=new URLSearchParams(location.search),h=document.documentElement;['theme','font','mark'].forEach(function(k){var v=q.get(k);if(v&&/^[a-z]+$/.test(v))h.dataset[k]=v})})()</script>'''
 html=f'''<!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="blue" data-font="unbounded" data-mark="fireball">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -32,9 +32,15 @@ html=f'''<!DOCTYPE html>
 <meta property="og:description" content="The unofficial token of galactivism. 1,000,000,000 fixed supply on Ethereum. No mint, no burn, no tax, no admin.">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://kudoken.vercel.app/images/v3/og-blue.jpg">
-<meta name="theme-color" content="#10293a">
-<link rel="icon" type="image/png" href="favicon.png">
-<link rel="preload" href="fonts/bss-latin.woff2" as="font" type="font/woff2" crossorigin>
+<meta name="theme-color" content="#0b2131">
+<link rel="icon" type="image/svg+xml" href="images/v3/fb-coin.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="images/v3/fb-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="images/v3/fb-16.png">
+<link rel="apple-touch-icon" href="images/v3/fb-180.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preload" href="fonts/unb-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/hk-latin.woff2" as="font" type="font/woff2" crossorigin>
 {headjs}
 <style>

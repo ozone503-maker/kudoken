@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="blue" data-font="unbounded" data-mark="fireball">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,11 +9,17 @@
 <meta property="og:description" content="The unofficial token of galactivism. 1,000,000,000 fixed supply on Ethereum. No mint, no burn, no tax, no admin.">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://kudoken.vercel.app/images/v3/og-blue.jpg">
-<meta name="theme-color" content="#10293a">
-<link rel="icon" type="image/png" href="favicon.png">
-<link rel="preload" href="fonts/bss-latin.woff2" as="font" type="font/woff2" crossorigin>
+<meta name="theme-color" content="#0b2131">
+<link rel="icon" type="image/svg+xml" href="images/v3/fb-coin.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="images/v3/fb-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="images/v3/fb-16.png">
+<link rel="apple-touch-icon" href="images/v3/fb-180.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preload" href="fonts/unb-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/hk-latin.woff2" as="font" type="font/woff2" crossorigin>
-<script>/* theme preview switch for the themes branch: ?theme=lime|purple&font=unbounded|chakra&mark=new */(function(){var q=new URLSearchParams(location.search),h=document.documentElement;['theme','font','mark'].forEach(function(k){var v=q.get(k);if(v&&/^[a-z]+$/.test(v))h.dataset[k]=v});if(h.dataset.mark==='fireball'){document.write('<link rel="icon" type="image/svg+xml" href="images/v3/fb-coin.svg"><link rel="icon" type="image/png" sizes="32x32" href="images/v3/fb-32.png"><link rel="icon" type="image/png" sizes="16x16" href="images/v3/fb-16.png"><link rel="apple-touch-icon" href="images/v3/fb-180.png">')}})()</script>
+<script>/* Default is the electric blue theme. Optional preview switch: ?theme=lime|purple|blue&font=unbounded|chakra&mark=new|fireball */(function(){var q=new URLSearchParams(location.search),h=document.documentElement;['theme','font','mark'].forEach(function(k){var v=q.get(k);if(v&&/^[a-z]+$/.test(v))h.dataset[k]=v})})()</script>
 <style>
 /* Fonts are self-hosted (SIL Open Font License). This page sets no cookies and loads no analytics or trackers. */
 @font-face{font-family:"Big Shoulders Stencil";src:url(fonts/bss-latin.woff2) format("woff2");font-weight:600 900;font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
@@ -434,6 +440,9 @@ html[data-mark="fireball"] .fb-hero{width:2.5em;height:1.25em;margin:-.3em 0 -.3
 html[data-mark="fireball"] .fb-hero .mark-fb{width:100%;height:100%}
 html[data-mark="fireball"] .fb-hero{width:2.2em;height:1.1em;margin:-.25em 0 -.25em .06em;vertical-align:-.1em}
 html[data-mark="fireball"] .fb-hero{width:2em;height:1em;margin:-.2em 0 -.2em .08em;vertical-align:.02em}
+html[data-theme="blue"] kudoken-wallet{--fire:#0a5fd6;--air:#0a5fd6;--comet:#5fd8ff}
+html[data-theme="blue"]{--dev-bg:#ebe5d9;--dev-ink:#33404b}html[data-theme="blue"] .pill.dev{border-color:rgba(51,64,75,.4)}
+html[data-font="unbounded"] kudoken-wallet{--kdu-display:"Unbounded","Arial Black",sans-serif}
 
 /* Kudoken fireball motion: transforms and opacity only */
 .fb{overflow:visible}
