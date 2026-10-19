@@ -1,0 +1,25 @@
+<section class="photo" style="min-height:min(66svh,620px);--pos:50% 55%;--pos-m:30% 55%;--shade:linear-gradient(180deg,rgba(10,11,12,.62),rgba(10,11,12,.12) 60%,rgba(17,19,21,1))" aria-labelledby="wallet-title">
+  {{picm cloud-bay|A bay under a long bank of white clouds, black lava rock along the shore|1800|1350}}
+  <div class="w phead">
+    <h1 id="wallet-title">Play money<br><span class="v">real wallet</span></h1>
+    <p class="lede">This is the wallet that will plug into every Kudoken spot. Right now it runs on Base Sepolia, a test network, so you can poke at it without risking a cent.</p>
+  </div>
+</section>
+
+<section class="pad" style="padding-top:clamp(30px,5vw,60px)" aria-label="Wallet demo">
+  <div class="w wallet-grid">
+    <div>
+      <h2>Have a go</h2>
+      <ul class="facts">
+        <li><b>Connect</b> with MetaMask, Coinbase Wallet or any browser wallet.</li>
+        <li><b>See</b> your test KDU balance. It starts at zero, which is normal.</li>
+        <li><b>Send</b> test KDU to a friend. You need a little free test ETH for the fee, from a <a href="https://docs.base.org/base-chain/network-information/network-faucets" target="_blank" rel="noopener">Base Sepolia faucet</a>.</li>
+      </ul>
+      <p class="cap" style="color:var(--mute);margin-top:22px">Nothing here is real money. Test tokens have no value and cannot be swapped for real KDU. Real KDU lives on Ethereum, see the <a href="/token/">token page</a>.</p>
+    </div>
+    <div class="wallet-slot" id="kdu-wallet">
+      <kudoken-wallet chain="base-sepolia" token="0xA3e077C25d3e2279B1429eDb9F25071674C53b51" mode="wallet"></kudoken-wallet>
+      <noscript><p>The wallet demo needs JavaScript.</p></noscript>
+    </div>
+  </div>
+</section>
