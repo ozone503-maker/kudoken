@@ -77,12 +77,22 @@ html[data-font="chakra"] .hero h1{font-size:min(13vw,5.3rem)}
 @media(max-width:439px){html[data-font="unbounded"] .brand span{font-size:1.02rem}html[data-mark="new"] .nav .mark-new{width:32px;height:32px}}
 
 /* ===== Blue theme: electric ocean blue, original fireball mark, Unbounded ===== */
-.mark-fb{display:none}
+.mark-fb,.fb-hero{display:none}
+.fb-defs{position:absolute;width:0;height:0;overflow:hidden}
 html[data-mark="fireball"] .mark-old,html[data-mark="fireball"] .mark-new{display:none}
-html[data-mark="fireball"] .mark-fb{display:block;width:52px;height:auto;filter:drop-shadow(0 0 6px rgba(47,184,255,.45))}
-html[data-mark="fireball"] footer .brand img.mark-fb{background:none;padding:0;border-radius:0;width:60px}
-html[data-mark="fireball"] .eco .hub .mark-fb{width:150px;background:none;padding:0;filter:drop-shadow(0 0 14px rgba(47,184,255,.7)) drop-shadow(0 0 2px rgba(143,246,255,.8))}
-@media(max-width:439px){html[data-mark="fireball"] .nav .mark-fb{width:42px}}
+html[data-mark="fireball"] .mark-fb{display:block;width:72px;height:36px;flex:none}
+html[data-mark="fireball"] footer .brand .mark-fb{width:84px;height:42px}
+html[data-mark="fireball"] .eco .hub .mark-fb{width:190px;height:95px;margin-left:-40px}
+@media(max-width:439px){html[data-mark="fireball"] .nav .mark-fb{width:58px;height:29px}}
+/* hero moment: the fireball flies in beside ENERGY, lands with a burst, then idles */
+html[data-mark="fireball"] .fb-hero{display:inline-block;width:1.9em;height:.95em;margin-left:.12em;vertical-align:-.04em;font-style:normal;animation:fbFly 1.15s cubic-bezier(.16,.84,.24,1) .25s both;will-change:transform}
+.fb-hero .fb{width:100%;height:100%;display:block}
+.fb-hero .tail{transform-box:fill-box;transform-origin:100% 50%;animation:fbStretch 1.4s ease-out .25s both}
+.fb-hero .fb .burst{animation:fbBurst .7s ease-out 1.3s both}
+@keyframes fbFly{0%{transform:translateX(-110vw) scale(.6);opacity:0}12%{opacity:1}100%{transform:none;opacity:1}}
+@keyframes fbStretch{0%{transform:scaleX(2.4)}65%{transform:scaleX(1.3)}100%{transform:none}}
+@media(prefers-reduced-motion:reduce){html[data-mark="fireball"] .fb-hero,.fb-hero .tail{animation:none}}
+.brand:hover .fb .coin{transform:scale(1.06);transition:transform .2s}
 html[data-theme="blue"]{
   --a1:#8ff6ff; --a2:#2fc2ff; --a3:#3d7bff;
   --accent-l:#5fd8ff; --accent-fill:#2fb8ff; --accent-deep:#0a5fd6; --on-accent:#061826;
@@ -109,3 +119,7 @@ html[data-theme="blue"] .timeline li.next::after{background:transparent;border-c
 html[data-theme="blue"] .timeline time{color:#e7dbc4}
 html[data-theme="blue"] .timeline li.key::after{background:var(--accent-grad);box-shadow:0 0 0 4px var(--glow-soft),0 0 18px var(--glow)}
 html[data-theme="blue"] .timeline li.key time{color:var(--accent-l)}
+html[data-mark="fireball"] .fb-hero{width:2.5em;height:1.25em;margin:-.3em 0 -.3em .06em;vertical-align:-.2em}
+html[data-mark="fireball"] .fb-hero .mark-fb{width:100%;height:100%}
+html[data-mark="fireball"] .fb-hero{width:2.2em;height:1.1em;margin:-.25em 0 -.25em .06em;vertical-align:-.1em}
+html[data-mark="fireball"] .fb-hero{width:2em;height:1em;margin:-.2em 0 -.2em .08em;vertical-align:.02em}

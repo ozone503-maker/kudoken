@@ -1,0 +1,26 @@
+/* Kudoken fireball motion: transforms and opacity only */
+.fb{overflow:visible}
+.fb .t1,.fb .t2,.fb .t3,.fb .coin,.fb .glow,.fb .burst,.fb .sp{transform-box:fill-box}
+.fb .t1,.fb .t2,.fb .t3{transform-origin:100% 50%}
+.fb .coin,.fb .glow,.fb .burst{transform-origin:50% 50%}
+.fb .sp{transform-origin:100% 50%;opacity:0}
+.fb .burst{opacity:0}
+.fb .t1{animation:fbA 1.1s ease-in-out infinite alternate}
+.fb .t2{animation:fbB .74s ease-in-out infinite alternate}
+.fb .t3{animation:fbC .52s ease-in-out infinite alternate}
+.fb .glow{animation:fbG 1.8s ease-in-out infinite alternate}
+.fb .coin{animation:fbK 2.6s ease-in-out infinite alternate}
+.fb .sp{animation:fbS .9s linear infinite}
+.fb .sp1{animation-delay:-.3s}.fb .sp2{animation-delay:-.55s;animation-duration:1.1s}.fb .sp3{animation-delay:-.15s;animation-duration:.75s}
+@keyframes fbA{0%{transform:scale(1,1)}100%{transform:scale(1.06,.95)}}
+@keyframes fbB{0%{transform:scale(.96,1.02);opacity:.92}100%{transform:scale(1.08,.96);opacity:1}}
+@keyframes fbC{0%{transform:scale(1.05,.97);opacity:1}100%{transform:scale(.92,1.04);opacity:.85}}
+@keyframes fbG{0%{transform:scale(.94);opacity:.7}100%{transform:scale(1.08);opacity:1}}
+@keyframes fbK{0%{transform:scale(1)}100%{transform:scale(1.025)}}
+@keyframes fbS{0%{transform:translateX(0) scaleX(.4);opacity:0}25%{opacity:.85}100%{transform:translateX(-46px) scaleX(1);opacity:0}}
+.fb.burst-now .burst{animation:fbBurst .6s ease-out}
+.fb.burst-now .coin{animation:fbPop .6s ease-out}
+@keyframes fbBurst{0%{transform:scale(.6);opacity:.95}100%{transform:scale(2.1);opacity:0}}
+@keyframes fbPop{0%{transform:scale(1)}30%{transform:scale(1.12)}100%{transform:scale(1)}}
+.fb.off *{animation-play-state:paused!important}
+@media(prefers-reduced-motion:reduce){.fb *{animation:none!important}.fb .sp{opacity:0}}

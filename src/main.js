@@ -43,3 +43,20 @@ document.querySelectorAll('[data-copy]').forEach(function (btn) {
   if (slot) io.observe(slot);
   vids.forEach(function (v) { io.observe(v); });
 })();
+// Fireball: pause when off screen, burst on tap or click
+(function () {
+  var fbs = document.querySelectorAll('.fb:not(.fb-defs)');
+  if (!fbs.length) return;
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (es) { es.forEach(function (e) { e.target.classList.toggle('off', !e.isIntersecting); }); });
+    fbs.forEach(function (f) { io.observe(f); });
+  }
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  document.querySelectorAll('.brand, .fb-hero, .eco .hub').forEach(function (el) {
+    el.addEventListener('pointerdown', function () {
+      var f = el.querySelector('.fb'); if (!f) return;
+      f.classList.remove('burst-now'); void f.getBoundingClientRect(); f.classList.add('burst-now');
+      setTimeout(function () { f.classList.remove('burst-now'); }, 650);
+    });
+  });
+})();

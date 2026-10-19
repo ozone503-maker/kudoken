@@ -8,12 +8,12 @@
 <meta property="og:title" content="Kudoken (KDU) | Energy is currency">
 <meta property="og:description" content="The unofficial token of galactivism. 1,000,000,000 fixed supply on Ethereum. No mint, no burn, no tax, no admin.">
 <meta property="og:type" content="website">
-<meta property="og:image" content="https://kudoken.vercel.app/images/hero-honu-1100.jpg">
+<meta property="og:image" content="https://kudoken.vercel.app/images/v3/og-blue.jpg">
 <meta name="theme-color" content="#10293a">
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="preload" href="fonts/bss-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/hk-latin.woff2" as="font" type="font/woff2" crossorigin>
-<script>/* theme preview switch for the themes branch: ?theme=lime|purple&font=unbounded|chakra&mark=new */(function(){var q=new URLSearchParams(location.search),h=document.documentElement;['theme','font','mark'].forEach(function(k){var v=q.get(k);if(v&&/^[a-z]+$/.test(v))h.dataset[k]=v});if(h.dataset.mark==='fireball'){document.write('<link rel="icon" type="image/png" sizes="32x32" href="images/v3/fav-coin-32.png"><link rel="icon" type="image/png" sizes="16x16" href="images/v3/fav-coin-16.png"><link rel="apple-touch-icon" href="images/v3/fav-180.png">')}})()</script>
+<script>/* theme preview switch for the themes branch: ?theme=lime|purple&font=unbounded|chakra&mark=new */(function(){var q=new URLSearchParams(location.search),h=document.documentElement;['theme','font','mark'].forEach(function(k){var v=q.get(k);if(v&&/^[a-z]+$/.test(v))h.dataset[k]=v});if(h.dataset.mark==='fireball'){document.write('<link rel="icon" type="image/svg+xml" href="images/v3/fb-coin.svg"><link rel="icon" type="image/png" sizes="32x32" href="images/v3/fb-32.png"><link rel="icon" type="image/png" sizes="16x16" href="images/v3/fb-16.png"><link rel="apple-touch-icon" href="images/v3/fb-180.png">')}})()</script>
 <style>
 /* Fonts are self-hosted (SIL Open Font License). This page sets no cookies and loads no analytics or trackers. */
 @font-face{font-family:"Big Shoulders Stencil";src:url(fonts/bss-latin.woff2) format("woff2");font-weight:600 900;font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
@@ -388,12 +388,22 @@ html[data-font="chakra"] .hero h1{font-size:min(13vw,5.3rem)}
 @media(max-width:439px){html[data-font="unbounded"] .brand span{font-size:1.02rem}html[data-mark="new"] .nav .mark-new{width:32px;height:32px}}
 
 /* ===== Blue theme: electric ocean blue, original fireball mark, Unbounded ===== */
-.mark-fb{display:none}
+.mark-fb,.fb-hero{display:none}
+.fb-defs{position:absolute;width:0;height:0;overflow:hidden}
 html[data-mark="fireball"] .mark-old,html[data-mark="fireball"] .mark-new{display:none}
-html[data-mark="fireball"] .mark-fb{display:block;width:52px;height:auto;filter:drop-shadow(0 0 6px rgba(47,184,255,.45))}
-html[data-mark="fireball"] footer .brand img.mark-fb{background:none;padding:0;border-radius:0;width:60px}
-html[data-mark="fireball"] .eco .hub .mark-fb{width:150px;background:none;padding:0;filter:drop-shadow(0 0 14px rgba(47,184,255,.7)) drop-shadow(0 0 2px rgba(143,246,255,.8))}
-@media(max-width:439px){html[data-mark="fireball"] .nav .mark-fb{width:42px}}
+html[data-mark="fireball"] .mark-fb{display:block;width:72px;height:36px;flex:none}
+html[data-mark="fireball"] footer .brand .mark-fb{width:84px;height:42px}
+html[data-mark="fireball"] .eco .hub .mark-fb{width:190px;height:95px;margin-left:-40px}
+@media(max-width:439px){html[data-mark="fireball"] .nav .mark-fb{width:58px;height:29px}}
+/* hero moment: the fireball flies in beside ENERGY, lands with a burst, then idles */
+html[data-mark="fireball"] .fb-hero{display:inline-block;width:1.9em;height:.95em;margin-left:.12em;vertical-align:-.04em;font-style:normal;animation:fbFly 1.15s cubic-bezier(.16,.84,.24,1) .25s both;will-change:transform}
+.fb-hero .fb{width:100%;height:100%;display:block}
+.fb-hero .tail{transform-box:fill-box;transform-origin:100% 50%;animation:fbStretch 1.4s ease-out .25s both}
+.fb-hero .fb .burst{animation:fbBurst .7s ease-out 1.3s both}
+@keyframes fbFly{0%{transform:translateX(-110vw) scale(.6);opacity:0}12%{opacity:1}100%{transform:none;opacity:1}}
+@keyframes fbStretch{0%{transform:scaleX(2.4)}65%{transform:scaleX(1.3)}100%{transform:none}}
+@media(prefers-reduced-motion:reduce){html[data-mark="fireball"] .fb-hero,.fb-hero .tail{animation:none}}
+.brand:hover .fb .coin{transform:scale(1.06);transition:transform .2s}
 html[data-theme="blue"]{
   --a1:#8ff6ff; --a2:#2fc2ff; --a3:#3d7bff;
   --accent-l:#5fd8ff; --accent-fill:#2fb8ff; --accent-deep:#0a5fd6; --on-accent:#061826;
@@ -420,12 +430,49 @@ html[data-theme="blue"] .timeline li.next::after{background:transparent;border-c
 html[data-theme="blue"] .timeline time{color:#e7dbc4}
 html[data-theme="blue"] .timeline li.key::after{background:var(--accent-grad);box-shadow:0 0 0 4px var(--glow-soft),0 0 18px var(--glow)}
 html[data-theme="blue"] .timeline li.key time{color:var(--accent-l)}
+html[data-mark="fireball"] .fb-hero{width:2.5em;height:1.25em;margin:-.3em 0 -.3em .06em;vertical-align:-.2em}
+html[data-mark="fireball"] .fb-hero .mark-fb{width:100%;height:100%}
+html[data-mark="fireball"] .fb-hero{width:2.2em;height:1.1em;margin:-.25em 0 -.25em .06em;vertical-align:-.1em}
+html[data-mark="fireball"] .fb-hero{width:2em;height:1em;margin:-.2em 0 -.2em .08em;vertical-align:.02em}
+
+/* Kudoken fireball motion: transforms and opacity only */
+.fb{overflow:visible}
+.fb .t1,.fb .t2,.fb .t3,.fb .coin,.fb .glow,.fb .burst,.fb .sp{transform-box:fill-box}
+.fb .t1,.fb .t2,.fb .t3{transform-origin:100% 50%}
+.fb .coin,.fb .glow,.fb .burst{transform-origin:50% 50%}
+.fb .sp{transform-origin:100% 50%;opacity:0}
+.fb .burst{opacity:0}
+.fb .t1{animation:fbA 1.1s ease-in-out infinite alternate}
+.fb .t2{animation:fbB .74s ease-in-out infinite alternate}
+.fb .t3{animation:fbC .52s ease-in-out infinite alternate}
+.fb .glow{animation:fbG 1.8s ease-in-out infinite alternate}
+.fb .coin{animation:fbK 2.6s ease-in-out infinite alternate}
+.fb .sp{animation:fbS .9s linear infinite}
+.fb .sp1{animation-delay:-.3s}.fb .sp2{animation-delay:-.55s;animation-duration:1.1s}.fb .sp3{animation-delay:-.15s;animation-duration:.75s}
+@keyframes fbA{0%{transform:scale(1,1)}100%{transform:scale(1.06,.95)}}
+@keyframes fbB{0%{transform:scale(.96,1.02);opacity:.92}100%{transform:scale(1.08,.96);opacity:1}}
+@keyframes fbC{0%{transform:scale(1.05,.97);opacity:1}100%{transform:scale(.92,1.04);opacity:.85}}
+@keyframes fbG{0%{transform:scale(.94);opacity:.7}100%{transform:scale(1.08);opacity:1}}
+@keyframes fbK{0%{transform:scale(1)}100%{transform:scale(1.025)}}
+@keyframes fbS{0%{transform:translateX(0) scaleX(.4);opacity:0}25%{opacity:.85}100%{transform:translateX(-46px) scaleX(1);opacity:0}}
+.fb.burst-now .burst{animation:fbBurst .6s ease-out}
+.fb.burst-now .coin{animation:fbPop .6s ease-out}
+@keyframes fbBurst{0%{transform:scale(.6);opacity:.95}100%{transform:scale(2.1);opacity:0}}
+@keyframes fbPop{0%{transform:scale(1)}30%{transform:scale(1.12)}100%{transform:scale(1)}}
+.fb.off *{animation-play-state:paused!important}
+@media(prefers-reduced-motion:reduce){.fb *{animation:none!important}.fb .sp{opacity:0}}
 </style>
 </head>
 <body>
+<svg class="fb-defs" width="0" height="0" aria-hidden="true" focusable="false"><defs><linearGradient id="fbT1" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#3d7bff" stop-opacity="0"/><stop offset=".35" stop-color="#3d7bff" stop-opacity=".85"/><stop offset="1" stop-color="#3d7bff"/></linearGradient>
+<linearGradient id="fbT2" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#2fc2ff" stop-opacity="0"/><stop offset=".4" stop-color="#2fc2ff" stop-opacity=".9"/><stop offset="1" stop-color="#2fc2ff"/></linearGradient>
+<linearGradient id="fbT3" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#8ff6ff" stop-opacity="0"/><stop offset=".45" stop-color="#8ff6ff"/><stop offset="1" stop-color="#ffffff"/></linearGradient>
+<radialGradient id="fbGlow"><stop offset="0" stop-color="#2fc2ff" stop-opacity=".75"/><stop offset=".55" stop-color="#2fc2ff" stop-opacity=".28"/><stop offset="1" stop-color="#2fc2ff" stop-opacity="0"/></radialGradient>
+<radialGradient id="fbRing" cx=".42" cy=".4" r=".62"><stop offset="0" stop-color="#8ff6ff"/><stop offset=".7" stop-color="#2fc2ff"/><stop offset="1" stop-color="#3d7bff"/></radialGradient>
+<radialGradient id="fbCore" cx=".45" cy=".42" r=".6"><stop offset="0" stop-color="#ffffff"/><stop offset=".62" stop-color="#f1feff"/><stop offset="1" stop-color="#b9f6ff"/></radialGradient></defs></svg>
 <header class="nav">
   <div class="wrap">
-    <a class="brand" href="#top" aria-label="Kudoken home"><img class="mark-old" src="images/mark.png" width="242" height="170" alt=""><svg class="mark-new" viewBox="0 0 100 100" aria-hidden="true"><defs><linearGradient id="nmg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" style="stop-color:var(--a1,#ff8a63)"/><stop offset=".5" style="stop-color:var(--a2,#b8381f)"/><stop offset="1" style="stop-color:var(--a3,#b8381f)"/></linearGradient></defs><circle cx="50" cy="50" r="48" fill="url(#nmg)"/><path fill="#0b2131" d="M30.7 24.7L44 24.7L44 46L61.3 24.7L77.3 24.7L56 50L77.3 75.3L61.3 75.3L44 54L44 75.3L30.7 75.3Z"/></svg><img class="mark-fb" src="images/v3/fireball-320.webp" width="320" height="227" alt=""><span>Kudoken</span></a>
+    <a class="brand" href="#top" aria-label="Kudoken home"><img class="mark-old" src="images/mark.png" width="242" height="170" alt=""><svg class="mark-new" viewBox="0 0 100 100" aria-hidden="true"><defs><linearGradient id="nmg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" style="stop-color:var(--a1,#ff8a63)"/><stop offset=".5" style="stop-color:var(--a2,#b8381f)"/><stop offset="1" style="stop-color:var(--a3,#b8381f)"/></linearGradient></defs><circle cx="50" cy="50" r="48" fill="url(#nmg)"/><path fill="#0b2131" d="M30.7 24.7L44 24.7L44 46L61.3 24.7L77.3 24.7L56 50L77.3 75.3L61.3 75.3L44 54L44 75.3L30.7 75.3Z"/></svg><svg class="fb mark-fb" viewBox="0 0 240 120" aria-hidden="true" focusable="false"><circle class="glow" cx="172" cy="60" r="62" fill="url(#fbGlow)"/><g class="tail"><path class="t1" d="M180.0 14.0 C140.0 6.0 96.0 10.0 56.0 24.0 Q79.1 35.9 98.0 38.0 Q52.9 38.3 16.0 40.0 Q49.0 49.4 76.0 51.0 Q34.2 52.2 0.0 59.0 Q42.9 65.8 78.0 67.0 Q45.0 68.8 18.0 79.0 Q63.1 81.5 100.0 82.0 Q76.9 84.0 58.0 95.0 C96.0 110.0 140.0 114.0 180.0 106.0Z" fill="url(#fbT1)"/><path class="t2" d="M181.9 24.1 C152.3 17.9 119.8 21.0 90.2 31.9 Q107.3 41.2 121.2 42.8 Q87.9 43.1 60.6 44.4 Q85.0 51.7 105.0 53.0 Q74.0 53.9 48.7 59.2 Q80.5 64.5 106.4 65.5 Q82.0 66.9 62.0 74.8 Q95.4 76.8 122.7 77.2 Q105.6 78.7 91.6 87.3 C119.8 99.0 152.3 102.1 181.9 95.9Z" fill="url(#fbT2)"/><path class="t3" d="M182.0 34.2 C162.0 29.8 140.0 32.0 120.0 39.8 Q131.6 46.5 141.0 47.7 Q118.5 47.8 100.0 48.8 Q116.5 54.0 130.0 55.0 Q109.1 55.6 92.0 59.4 Q113.5 63.2 131.0 63.9 Q114.5 64.9 101.0 70.6 Q123.5 72.1 142.0 72.3 Q130.4 73.4 121.0 79.6 C140.0 88.0 162.0 90.2 182.0 85.8Z" fill="url(#fbT3)"/><g class="sps"><rect class="sp sp0" x="70" y="44" width="34" height="2.6" rx="1.3" fill="#ffffff"/><rect class="sp sp1" x="52" y="58" width="46" height="2.6" rx="1.3" fill="#ffffff"/><rect class="sp sp2" x="74" y="72" width="30" height="2.6" rx="1.3" fill="#ffffff"/><rect class="sp sp3" x="96" y="52" width="22" height="2.6" rx="1.3" fill="#ffffff"/></g></g><g class="coin"><circle cx="172" cy="60" r="46" fill="url(#fbRing)"/><circle cx="172" cy="60" r="38.5" fill="url(#fbCore)"/><path d="M142 38 A37 37 0 0 1 186 25" fill="none" stroke="#ffffff" stroke-width="2.4" stroke-linecap="round" opacity=".8"/><path fill="#0b3aa8" d="M151.01 80.00 L151.01 40.00 L163.34 40.00 L163.34 70.24 L160.14 67.63 L181.41 40.00 L194.45 40.00 L162.25 80.00Z"/><path fill="#1f9bff" d="M170.17 61.26 L179.27 53.93 L194.99 80.00 L180.93 80.00Z"/></g><circle class="burst" cx="172" cy="60" r="46" fill="none" stroke="#8ff6ff" stroke-width="5"/></svg><span>Kudoken</span></a>
     <nav class="links" aria-label="Sections">
       <a href="#token">Token</a><a href="#plan">5 year plan</a><a href="#base">Base</a><a href="#universe">Universe</a><a href="#faq">FAQ</a>
     </nav>
@@ -446,7 +493,7 @@ html[data-theme="blue"] .timeline li.key time{color:var(--accent-l)}
     </picture>
   </div>
   <div class="hero-copy">
-    <h1 id="hero-title">Energy<br><span>is currency</span></h1>
+    <h1 id="hero-title">Energy<i class="fb-hero"><svg class="fb mark-fb" viewBox="0 0 240 120" aria-hidden="true" focusable="false"><circle class="glow" cx="172" cy="60" r="62" fill="url(#fbGlow)"/><g class="tail"><path class="t1" d="M180.0 14.0 C140.0 6.0 96.0 10.0 56.0 24.0 Q79.1 35.9 98.0 38.0 Q52.9 38.3 16.0 40.0 Q49.0 49.4 76.0 51.0 Q34.2 52.2 0.0 59.0 Q42.9 65.8 78.0 67.0 Q45.0 68.8 18.0 79.0 Q63.1 81.5 100.0 82.0 Q76.9 84.0 58.0 95.0 C96.0 110.0 140.0 114.0 180.0 106.0Z" fill="url(#fbT1)"/><path class="t2" d="M181.9 24.1 C152.3 17.9 119.8 21.0 90.2 31.9 Q107.3 41.2 121.2 42.8 Q87.9 43.1 60.6 44.4 Q85.0 51.7 105.0 53.0 Q74.0 53.9 48.7 59.2 Q80.5 64.5 106.4 65.5 Q82.0 66.9 62.0 74.8 Q95.4 76.8 122.7 77.2 Q105.6 78.7 91.6 87.3 C119.8 99.0 152.3 102.1 181.9 95.9Z" fill="url(#fbT2)"/><path class="t3" d="M182.0 34.2 C162.0 29.8 140.0 32.0 120.0 39.8 Q131.6 46.5 141.0 47.7 Q118.5 47.8 100.0 48.8 Q116.5 54.0 130.0 55.0 Q109.1 55.6 92.0 59.4 Q113.5 63.2 131.0 63.9 Q114.5 64.9 101.0 70.6 Q123.5 72.1 142.0 72.3 Q130.4 73.4 121.0 79.6 C140.0 88.0 162.0 90.2 182.0 85.8Z" fill="url(#fbT3)"/><g class="sps"><rect class="sp sp0" x="70" y="44" width="34" height="2.6" rx="1.3" fill="#ffffff"/><rect class="sp sp1" x="52" y="58" width="46" height="2.6" rx="1.3" fill="#ffffff"/><rect class="sp sp2" x="74" y="72" width="30" height="2.6" rx="1.3" fill="#ffffff"/><rect class="sp sp3" x="96" y="52" width="22" height="2.6" rx="1.3" fill="#ffffff"/></g></g><g class="coin"><circle cx="172" cy="60" r="46" fill="url(#fbRing)"/><circle cx="172" cy="60" r="38.5" fill="url(#fbCore)"/><path d="M142 38 A37 37 0 0 1 186 25" fill="none" stroke="#ffffff" stroke-width="2.4" stroke-linecap="round" opacity=".8"/><path fill="#0b3aa8" d="M151.01 80.00 L151.01 40.00 L163.34 40.00 L163.34 70.24 L160.14 67.63 L181.41 40.00 L194.45 40.00 L162.25 80.00Z"/><path fill="#1f9bff" d="M170.17 61.26 L179.27 53.93 L194.99 80.00 L180.93 80.00Z"/></g><circle class="burst" cx="172" cy="60" r="46" fill="none" stroke="#8ff6ff" stroke-width="5"/></svg></i><br><span>is currency</span></h1>
     <div class="after">
       <p class="tagline"><strong>Kudoken is the unofficial<br class="m"> token of galactivism.</strong><br>
         A fixed-supply token on Ethereum,<br>
@@ -648,7 +695,7 @@ html[data-theme="blue"] .timeline li.key time{color:var(--accent-l)}
           </g>
           <circle cx="500" cy="310" r="96" fill="#0d2738" stroke="rgba(127,208,242,.6)" stroke-width="2"/>
         </svg>
-        <div class="hub"><img class="mark-old" src="images/mark.png" width="242" height="170" alt=""><svg class="mark-new" viewBox="0 0 100 100" aria-hidden="true"><defs><linearGradient id="nmg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" style="stop-color:var(--a1,#ff8a63)"/><stop offset=".5" style="stop-color:var(--a2,#b8381f)"/><stop offset="1" style="stop-color:var(--a3,#b8381f)"/></linearGradient></defs><circle cx="50" cy="50" r="48" fill="url(#nmg)"/><path fill="#0b2131" d="M30.7 24.7L44 24.7L44 46L61.3 24.7L77.3 24.7L56 50L77.3 75.3L61.3 75.3L44 54L44 75.3L30.7 75.3Z"/></svg><img class="mark-fb" src="images/v3/fireball-320.webp" width="320" height="227" alt=""><b>KDU</b><span class="pill live">Live on Ethereum</span></div>
+        <div class="hub"><img class="mark-old" src="images/mark.png" width="242" height="170" alt=""><svg class="mark-new" viewBox="0 0 100 100" aria-hidden="true"><defs><linearGradient id="nmg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" style="stop-color:var(--a1,#ff8a63)"/><stop offset=".5" style="stop-color:var(--a2,#b8381f)"/><stop offset="1" style="stop-color:var(--a3,#b8381f)"/></linearGradient></defs><circle cx="50" cy="50" r="48" fill="url(#nmg)"/><path fill="#0b2131" d="M30.7 24.7L44 24.7L44 46L61.3 24.7L77.3 24.7L56 50L77.3 75.3L61.3 75.3L44 54L44 75.3L30.7 75.3Z"/></svg><svg class="fb mark-fb" viewBox="0 0 240 120" aria-hidden="true" focusable="false"><circle class="glow" cx="172" cy="60" r="62" fill="url(#fbGlow)"/><g class="tail"><path class="t1" d="M180.0 14.0 C140.0 6.0 96.0 10.0 56.0 24.0 Q79.1 35.9 98.0 38.0 Q52.9 38.3 16.0 40.0 Q49.0 49.4 76.0 51.0 Q34.2 52.2 0.0 59.0 Q42.9 65.8 78.0 67.0 Q45.0 68.8 18.0 79.0 Q63.1 81.5 100.0 82.0 Q76.9 84.0 58.0 95.0 C96.0 110.0 140.0 114.0 180.0 106.0Z" fill="url(#fbT1)"/><path class="t2" d="M181.9 24.1 C152.3 17.9 119.8 21.0 90.2 31.9 Q107.3 41.2 121.2 42.8 Q87.9 43.1 60.6 44.4 Q85.0 51.7 105.0 53.0 Q74.0 53.9 48.7 59.2 Q80.5 64.5 106.4 65.5 Q82.0 66.9 62.0 74.8 Q95.4 76.8 122.7 77.2 Q105.6 78.7 91.6 87.3 C119.8 99.0 152.3 102.1 181.9 95.9Z" fill="url(#fbT2)"/><path class="t3" d="M182.0 34.2 C162.0 29.8 140.0 32.0 120.0 39.8 Q131.6 46.5 141.0 47.7 Q118.5 47.8 100.0 48.8 Q116.5 54.0 130.0 55.0 Q109.1 55.6 92.0 59.4 Q113.5 63.2 131.0 63.9 Q114.5 64.9 101.0 70.6 Q123.5 72.1 142.0 72.3 Q130.4 73.4 121.0 79.6 C140.0 88.0 162.0 90.2 182.0 85.8Z" fill="url(#fbT3)"/><g class="sps"><rect class="sp sp0" x="70" y="44" width="34" height="2.6" rx="1.3" fill="#ffffff"/><rect class="sp sp1" x="52" y="58" width="46" height="2.6" rx="1.3" fill="#ffffff"/><rect class="sp sp2" x="74" y="72" width="30" height="2.6" rx="1.3" fill="#ffffff"/><rect class="sp sp3" x="96" y="52" width="22" height="2.6" rx="1.3" fill="#ffffff"/></g></g><g class="coin"><circle cx="172" cy="60" r="46" fill="url(#fbRing)"/><circle cx="172" cy="60" r="38.5" fill="url(#fbCore)"/><path d="M142 38 A37 37 0 0 1 186 25" fill="none" stroke="#ffffff" stroke-width="2.4" stroke-linecap="round" opacity=".8"/><path fill="#0b3aa8" d="M151.01 80.00 L151.01 40.00 L163.34 40.00 L163.34 70.24 L160.14 67.63 L181.41 40.00 L194.45 40.00 L162.25 80.00Z"/><path fill="#1f9bff" d="M170.17 61.26 L179.27 53.93 L194.99 80.00 L180.93 80.00Z"/></g><circle class="burst" cx="172" cy="60" r="46" fill="none" stroke="#8ff6ff" stroke-width="5"/></svg><b>KDU</b><span class="pill live">Live on Ethereum</span></div>
         <ul>
           <li class="dev"><b>Monkey Jockey</b><p>Race rescue dogs, win KDU</p><span class="pill dev">KDU payouts coming</span><br><a href="https://monkeyjockey.space" target="_blank" rel="noopener">monkeyjockey.space</a></li>
           <li class="dev"><b>Outlet Mall</b><p>Pay at the stalls with KDU</p><span class="pill dev">Checkout coming</span><br><a href="https://outletmall.space" target="_blank" rel="noopener">outletmall.space</a></li>
@@ -812,7 +859,7 @@ html[data-theme="blue"] .timeline li.key time{color:var(--accent-l)}
 <footer>
   <div class="wrap">
     <div class="top">
-      <a class="brand" href="#top" aria-label="Back to top"><img class="mark-old" src="images/mark.png" width="242" height="170" alt=""><svg class="mark-new" viewBox="0 0 100 100" aria-hidden="true"><defs><linearGradient id="nmg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" style="stop-color:var(--a1,#ff8a63)"/><stop offset=".5" style="stop-color:var(--a2,#b8381f)"/><stop offset="1" style="stop-color:var(--a3,#b8381f)"/></linearGradient></defs><circle cx="50" cy="50" r="48" fill="url(#nmg)"/><path fill="#0b2131" d="M30.7 24.7L44 24.7L44 46L61.3 24.7L77.3 24.7L56 50L77.3 75.3L61.3 75.3L44 54L44 75.3L30.7 75.3Z"/></svg><img class="mark-fb" src="images/v3/fireball-320.webp" width="320" height="227" alt=""><span>Kudoken</span></a>
+      <a class="brand" href="#top" aria-label="Back to top"><img class="mark-old" src="images/mark.png" width="242" height="170" alt=""><svg class="mark-new" viewBox="0 0 100 100" aria-hidden="true"><defs><linearGradient id="nmg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" style="stop-color:var(--a1,#ff8a63)"/><stop offset=".5" style="stop-color:var(--a2,#b8381f)"/><stop offset="1" style="stop-color:var(--a3,#b8381f)"/></linearGradient></defs><circle cx="50" cy="50" r="48" fill="url(#nmg)"/><path fill="#0b2131" d="M30.7 24.7L44 24.7L44 46L61.3 24.7L77.3 24.7L56 50L77.3 75.3L61.3 75.3L44 54L44 75.3L30.7 75.3Z"/></svg><svg class="fb mark-fb" viewBox="0 0 240 120" aria-hidden="true" focusable="false"><circle class="glow" cx="172" cy="60" r="62" fill="url(#fbGlow)"/><g class="tail"><path class="t1" d="M180.0 14.0 C140.0 6.0 96.0 10.0 56.0 24.0 Q79.1 35.9 98.0 38.0 Q52.9 38.3 16.0 40.0 Q49.0 49.4 76.0 51.0 Q34.2 52.2 0.0 59.0 Q42.9 65.8 78.0 67.0 Q45.0 68.8 18.0 79.0 Q63.1 81.5 100.0 82.0 Q76.9 84.0 58.0 95.0 C96.0 110.0 140.0 114.0 180.0 106.0Z" fill="url(#fbT1)"/><path class="t2" d="M181.9 24.1 C152.3 17.9 119.8 21.0 90.2 31.9 Q107.3 41.2 121.2 42.8 Q87.9 43.1 60.6 44.4 Q85.0 51.7 105.0 53.0 Q74.0 53.9 48.7 59.2 Q80.5 64.5 106.4 65.5 Q82.0 66.9 62.0 74.8 Q95.4 76.8 122.7 77.2 Q105.6 78.7 91.6 87.3 C119.8 99.0 152.3 102.1 181.9 95.9Z" fill="url(#fbT2)"/><path class="t3" d="M182.0 34.2 C162.0 29.8 140.0 32.0 120.0 39.8 Q131.6 46.5 141.0 47.7 Q118.5 47.8 100.0 48.8 Q116.5 54.0 130.0 55.0 Q109.1 55.6 92.0 59.4 Q113.5 63.2 131.0 63.9 Q114.5 64.9 101.0 70.6 Q123.5 72.1 142.0 72.3 Q130.4 73.4 121.0 79.6 C140.0 88.0 162.0 90.2 182.0 85.8Z" fill="url(#fbT3)"/><g class="sps"><rect class="sp sp0" x="70" y="44" width="34" height="2.6" rx="1.3" fill="#ffffff"/><rect class="sp sp1" x="52" y="58" width="46" height="2.6" rx="1.3" fill="#ffffff"/><rect class="sp sp2" x="74" y="72" width="30" height="2.6" rx="1.3" fill="#ffffff"/><rect class="sp sp3" x="96" y="52" width="22" height="2.6" rx="1.3" fill="#ffffff"/></g></g><g class="coin"><circle cx="172" cy="60" r="46" fill="url(#fbRing)"/><circle cx="172" cy="60" r="38.5" fill="url(#fbCore)"/><path d="M142 38 A37 37 0 0 1 186 25" fill="none" stroke="#ffffff" stroke-width="2.4" stroke-linecap="round" opacity=".8"/><path fill="#0b3aa8" d="M151.01 80.00 L151.01 40.00 L163.34 40.00 L163.34 70.24 L160.14 67.63 L181.41 40.00 L194.45 40.00 L162.25 80.00Z"/><path fill="#1f9bff" d="M170.17 61.26 L179.27 53.93 L194.99 80.00 L180.93 80.00Z"/></g><circle class="burst" cx="172" cy="60" r="46" fill="none" stroke="#8ff6ff" stroke-width="5"/></svg><span>Kudoken</span></a>
       <nav aria-label="Footer">
         <a href="https://app.uniswap.org/swap?chain=mainnet&outputCurrency=0x09851dD4760a8ed111f850affb38B10f84e80C8A" target="_blank" rel="noopener">Buy on Uniswap</a>
         <a href="https://etherscan.io/token/0x09851dD4760a8ed111f850affb38B10f84e80C8A" target="_blank" rel="noopener">Etherscan</a>
@@ -870,6 +917,23 @@ document.querySelectorAll('[data-copy]').forEach(function (btn) {
   }, { rootMargin: '600px 0px' });
   if (slot) io.observe(slot);
   vids.forEach(function (v) { io.observe(v); });
+})();
+// Fireball: pause when off screen, burst on tap or click
+(function () {
+  var fbs = document.querySelectorAll('.fb:not(.fb-defs)');
+  if (!fbs.length) return;
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (es) { es.forEach(function (e) { e.target.classList.toggle('off', !e.isIntersecting); }); });
+    fbs.forEach(function (f) { io.observe(f); });
+  }
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  document.querySelectorAll('.brand, .fb-hero, .eco .hub').forEach(function (el) {
+    el.addEventListener('pointerdown', function () {
+      var f = el.querySelector('.fb'); if (!f) return;
+      f.classList.remove('burst-now'); void f.getBoundingClientRect(); f.classList.add('burst-now');
+      setTimeout(function () { f.classList.remove('burst-now'); }, 650);
+    });
+  });
 })();
 </script>
 </body>
