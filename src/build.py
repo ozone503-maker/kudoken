@@ -31,7 +31,10 @@ html=f'''<!DOCTYPE html>
 <meta property="og:title" content="Kudoken (KDU) | Energy is currency">
 <meta property="og:description" content="The unofficial token of galactivism. 1,000,000,000 fixed supply on Ethereum. No mint, no burn, no tax, no admin.">
 <meta property="og:type" content="website">
-<meta property="og:image" content="https://kudoken.vercel.app/images/v3/og-blue.jpg">
+<meta property="og:image" content="https://kudoken.space/images/v3/og-blue.jpg">
+<meta property="og:url" content="https://kudoken.space/">
+<meta name="twitter:image" content="https://kudoken.space/images/v3/og-blue.jpg">
+<link rel="canonical" href="https://kudoken.space/">
 <meta name="theme-color" content="#0b2131">
 <link rel="icon" type="image/svg+xml" href="images/v3/fb-coin.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="images/v3/fb-32.png">
