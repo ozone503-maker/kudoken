@@ -20,7 +20,7 @@ body=re.sub(r'\{\{pc ([^}]+)\}\}',pc,body)
 body=body.replace('{{x}}',X).replace('{{ok}}',OK).replace('{{dots}}',dots).replace('{{BUY}}',BUY).replace('{{newmark}}',NEW)
 assert '{{' not in body, re.findall(r'\{\{[^}]*',body)[:3]
 js=open('src/main.js').read()
-headjs='''<script>/* theme preview switch for the themes branch: ?theme=lime|purple&font=unbounded|chakra&mark=new */(function(){var q=new URLSearchParams(location.search),h=document.documentElement;['theme','font','mark'].forEach(function(k){var v=q.get(k);if(v&&/^[a-z]+$/.test(v))h.dataset[k]=v})})()</script>'''
+headjs='''<script>/* theme preview switch for the themes branch: ?theme=lime|purple&font=unbounded|chakra&mark=new */(function(){var q=new URLSearchParams(location.search),h=document.documentElement;['theme','font','mark'].forEach(function(k){var v=q.get(k);if(v&&/^[a-z]+$/.test(v))h.dataset[k]=v});if(h.dataset.mark==='fireball'){document.write('<link rel="icon" type="image/png" sizes="32x32" href="images/v3/fav-coin-32.png"><link rel="icon" type="image/png" sizes="16x16" href="images/v3/fav-coin-16.png"><link rel="apple-touch-icon" href="images/v3/fav-180.png">')}})()</script>'''
 html=f'''<!DOCTYPE html>
 <html lang="en">
 <head>

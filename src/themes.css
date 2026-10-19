@@ -75,3 +75,37 @@ html[data-font] .hero h1 span{white-space:nowrap}
 html[data-font="unbounded"] .hero h1{font-size:min(10.2vw,4.1rem)}
 html[data-font="chakra"] .hero h1{font-size:min(13vw,5.3rem)}
 @media(max-width:439px){html[data-font="unbounded"] .brand span{font-size:1.02rem}html[data-mark="new"] .nav .mark-new{width:32px;height:32px}}
+
+/* ===== Blue theme: electric ocean blue, original fireball mark, Unbounded ===== */
+.mark-fb{display:none}
+html[data-mark="fireball"] .mark-old,html[data-mark="fireball"] .mark-new{display:none}
+html[data-mark="fireball"] .mark-fb{display:block;width:52px;height:auto;filter:drop-shadow(0 0 6px rgba(47,184,255,.45))}
+html[data-mark="fireball"] footer .brand img.mark-fb{background:none;padding:0;border-radius:0;width:60px}
+html[data-mark="fireball"] .eco .hub .mark-fb{width:150px;background:none;padding:0;filter:drop-shadow(0 0 14px rgba(47,184,255,.7)) drop-shadow(0 0 2px rgba(143,246,255,.8))}
+@media(max-width:439px){html[data-mark="fireball"] .nav .mark-fb{width:42px}}
+html[data-theme="blue"]{
+  --a1:#8ff6ff; --a2:#2fc2ff; --a3:#3d7bff;
+  --accent-l:#5fd8ff; --accent-fill:#2fb8ff; --accent-deep:#0a5fd6; --on-accent:#061826;
+  --deep-grad:linear-gradient(100deg,#0a72e6,#1340c4);
+  --glow:rgba(47,184,255,.6); --glow-soft:rgba(47,184,255,.24);
+  --live-bg:#d3f8e2; --live-ink:#0d5631; --dev-bg:#f3e7cf; --dev-ink:#5e4515;
+  --c-comm:#e7dbc4; --c-pool:#7f95ff; --c-out:#8ff6ff; --c-earn:#13315c;
+  --wordmark:"Unbounded","Arial Black",sans-serif;
+}
+/* cream headlines with an electric blue halo; gradient on the key words */
+html[data-theme="blue"] .scene:not(.light) h2,html[data-theme="blue"] .hero h1,html[data-theme="blue"] .vault-sec h2,html[data-theme="blue"] .postcards h2{color:var(--shell);text-shadow:0 2px 14px rgba(4,18,28,.5),0 0 34px rgba(47,184,255,.35)}
+html[data-theme="blue"] .pill.dev{border:1px dashed rgba(94,69,21,.45)}
+html[data-theme="blue"] .nav .brand span{color:#0a4fb8}
+html[data-theme="blue"] footer .brand span{color:var(--accent-l)}
+html[data-theme="blue"] .nav .links a:hover{color:var(--accent-deep)}
+/* blue on blue photos: keep card edges crisp */
+html[data-theme="blue"] .scene:not(.light) .glass{background:rgba(6,20,32,.84);box-shadow:0 24px 60px -30px rgba(0,0,0,.75),0 0 0 1px rgba(95,216,255,.28)}
+html[data-theme="blue"] .scene.light{--c-comm:#a08a5c; --c-pool:#3b4fc4}
+html[data-theme="blue"] .scene:not(.light) .wf .bar[style*="c-pool"]{color:#061826}
+html[data-theme="blue"] .hl,html[data-theme="blue"] .hero h1 span{text-shadow:none}
+html[data-theme="blue"] .on-dark .hl,html[data-theme="blue"] .hero h1 span{--a1:#c4fcff;--a2:#6fe0ff;--a3:#69a2ff;filter:drop-shadow(0 2px 6px rgba(3,14,24,.75)) drop-shadow(0 0 22px rgba(47,184,255,.55))}
+html[data-theme="blue"] .timeline li::after{background:#e7dbc4;box-shadow:0 0 0 4px rgba(231,219,196,.18)}
+html[data-theme="blue"] .timeline li.next::after{background:transparent;border-color:#e7dbc4}
+html[data-theme="blue"] .timeline time{color:#e7dbc4}
+html[data-theme="blue"] .timeline li.key::after{background:var(--accent-grad);box-shadow:0 0 0 4px var(--glow-soft),0 0 18px var(--glow)}
+html[data-theme="blue"] .timeline li.key time{color:var(--accent-l)}

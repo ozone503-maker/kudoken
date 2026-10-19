@@ -9,6 +9,7 @@
   --r:20px;
   --dw:900; --ds:1; --wordmark:var(--display);
   --accent-fill:#b8381f; --accent-l:#ff8a63; --accent-deep:#b8381f; --on-accent:#fff; --accent-grad:none; --glow:transparent;
+  --c-comm:#2f8fa3; --c-pool:#2348c4; --c-out:#2f8fa3; --c-earn:#2348c4;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;scroll-padding-top:68px}
@@ -129,9 +130,9 @@ figure.info figcaption{font-size:.92rem;color:var(--muted);margin-top:10px}
 
 /* holders dots */
 .dots{display:grid;grid-template-columns:repeat(19,1fr);gap:4px;margin-top:6px}
-.dots i{aspect-ratio:1;border-radius:50%;background:var(--air);opacity:.75}
+.dots i{aspect-ratio:1;border-radius:50%;background:var(--c-comm);opacity:.75}
 .dots i.cold{background:var(--accent-fill);opacity:1;transform:scale(1.35)}
-.dots i.pool{background:var(--water);opacity:1;transform:scale(1.2)}
+.dots i.pool{background:var(--c-pool);opacity:1;transform:scale(1.2)}
 
 /* contract */
 .addr{display:flex;flex-direction:column;gap:8px;margin-top:12px}
@@ -264,7 +265,7 @@ footer .brand span{color:var(--comet)}
 footer .brand img{background:var(--shell);border-radius:10px;padding:4px}
 footer nav{display:flex;flex-wrap:wrap;gap:10px 22px}
 footer nav a{color:#e8eef1;text-underline-offset:4px;text-decoration-color:rgba(255,255,255,.3)}
-footer .fine{margin-top:30px;max-width:54em;color:#9fb0bb}
+footer .fine{margin-top:30px;max-width:54em;color:#9fb0bb;overflow-wrap:anywhere}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn{transition:none}}
 
 /* waterfall */
@@ -278,3 +279,4 @@ footer .fine{margin-top:30px;max-width:54em;color:#9fb0bb}
 .wf .bar.out{padding:0}
 .wf .bar em{position:absolute;right:calc(100% + 8px);top:0;font-style:normal;color:var(--ink);font-weight:700}
 @media(max-width:520px){.wf li{grid-template-columns:1fr;gap:4px}}
+svg text[fill="#fff"]{fill:#fff}

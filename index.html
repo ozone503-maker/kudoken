@@ -13,7 +13,7 @@
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="preload" href="fonts/bss-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/hk-latin.woff2" as="font" type="font/woff2" crossorigin>
-<script>/* theme preview switch for the themes branch: ?theme=lime|purple&font=unbounded|chakra&mark=new */(function(){var q=new URLSearchParams(location.search),h=document.documentElement;['theme','font','mark'].forEach(function(k){var v=q.get(k);if(v&&/^[a-z]+$/.test(v))h.dataset[k]=v})})()</script>
+<script>/* theme preview switch for the themes branch: ?theme=lime|purple&font=unbounded|chakra&mark=new */(function(){var q=new URLSearchParams(location.search),h=document.documentElement;['theme','font','mark'].forEach(function(k){var v=q.get(k);if(v&&/^[a-z]+$/.test(v))h.dataset[k]=v});if(h.dataset.mark==='fireball'){document.write('<link rel="icon" type="image/png" sizes="32x32" href="images/v3/fav-coin-32.png"><link rel="icon" type="image/png" sizes="16x16" href="images/v3/fav-coin-16.png"><link rel="apple-touch-icon" href="images/v3/fav-180.png">')}})()</script>
 <style>
 /* Fonts are self-hosted (SIL Open Font License). This page sets no cookies and loads no analytics or trackers. */
 @font-face{font-family:"Big Shoulders Stencil";src:url(fonts/bss-latin.woff2) format("woff2");font-weight:600 900;font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
@@ -37,6 +37,7 @@
   --r:20px;
   --dw:900; --ds:1; --wordmark:var(--display);
   --accent-fill:#b8381f; --accent-l:#ff8a63; --accent-deep:#b8381f; --on-accent:#fff; --accent-grad:none; --glow:transparent;
+  --c-comm:#2f8fa3; --c-pool:#2348c4; --c-out:#2f8fa3; --c-earn:#2348c4;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;scroll-padding-top:68px}
@@ -157,9 +158,9 @@ figure.info figcaption{font-size:.92rem;color:var(--muted);margin-top:10px}
 
 /* holders dots */
 .dots{display:grid;grid-template-columns:repeat(19,1fr);gap:4px;margin-top:6px}
-.dots i{aspect-ratio:1;border-radius:50%;background:var(--air);opacity:.75}
+.dots i{aspect-ratio:1;border-radius:50%;background:var(--c-comm);opacity:.75}
 .dots i.cold{background:var(--accent-fill);opacity:1;transform:scale(1.35)}
-.dots i.pool{background:var(--water);opacity:1;transform:scale(1.2)}
+.dots i.pool{background:var(--c-pool);opacity:1;transform:scale(1.2)}
 
 /* contract */
 .addr{display:flex;flex-direction:column;gap:8px;margin-top:12px}
@@ -292,7 +293,7 @@ footer .brand span{color:var(--comet)}
 footer .brand img{background:var(--shell);border-radius:10px;padding:4px}
 footer nav{display:flex;flex-wrap:wrap;gap:10px 22px}
 footer nav a{color:#e8eef1;text-underline-offset:4px;text-decoration-color:rgba(255,255,255,.3)}
-footer .fine{margin-top:30px;max-width:54em;color:#9fb0bb}
+footer .fine{margin-top:30px;max-width:54em;color:#9fb0bb;overflow-wrap:anywhere}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn{transition:none}}
 
 /* waterfall */
@@ -306,6 +307,7 @@ footer .fine{margin-top:30px;max-width:54em;color:#9fb0bb}
 .wf .bar.out{padding:0}
 .wf .bar em{position:absolute;right:calc(100% + 8px);top:0;font-style:normal;color:var(--ink);font-weight:700}
 @media(max-width:520px){.wf li{grid-template-columns:1fr;gap:4px}}
+svg text[fill="#fff"]{fill:#fff}
 
 /* ===== Alternate themes (branch: themes). Pick with ?theme=lime|purple&font=unbounded|chakra ===== */
 .mark-new{display:none;width:40px;height:40px}
@@ -384,12 +386,46 @@ html[data-font] .hero h1 span{white-space:nowrap}
 html[data-font="unbounded"] .hero h1{font-size:min(10.2vw,4.1rem)}
 html[data-font="chakra"] .hero h1{font-size:min(13vw,5.3rem)}
 @media(max-width:439px){html[data-font="unbounded"] .brand span{font-size:1.02rem}html[data-mark="new"] .nav .mark-new{width:32px;height:32px}}
+
+/* ===== Blue theme: electric ocean blue, original fireball mark, Unbounded ===== */
+.mark-fb{display:none}
+html[data-mark="fireball"] .mark-old,html[data-mark="fireball"] .mark-new{display:none}
+html[data-mark="fireball"] .mark-fb{display:block;width:52px;height:auto;filter:drop-shadow(0 0 6px rgba(47,184,255,.45))}
+html[data-mark="fireball"] footer .brand img.mark-fb{background:none;padding:0;border-radius:0;width:60px}
+html[data-mark="fireball"] .eco .hub .mark-fb{width:150px;background:none;padding:0;filter:drop-shadow(0 0 14px rgba(47,184,255,.7)) drop-shadow(0 0 2px rgba(143,246,255,.8))}
+@media(max-width:439px){html[data-mark="fireball"] .nav .mark-fb{width:42px}}
+html[data-theme="blue"]{
+  --a1:#8ff6ff; --a2:#2fc2ff; --a3:#3d7bff;
+  --accent-l:#5fd8ff; --accent-fill:#2fb8ff; --accent-deep:#0a5fd6; --on-accent:#061826;
+  --deep-grad:linear-gradient(100deg,#0a72e6,#1340c4);
+  --glow:rgba(47,184,255,.6); --glow-soft:rgba(47,184,255,.24);
+  --live-bg:#d3f8e2; --live-ink:#0d5631; --dev-bg:#f3e7cf; --dev-ink:#5e4515;
+  --c-comm:#e7dbc4; --c-pool:#7f95ff; --c-out:#8ff6ff; --c-earn:#13315c;
+  --wordmark:"Unbounded","Arial Black",sans-serif;
+}
+/* cream headlines with an electric blue halo; gradient on the key words */
+html[data-theme="blue"] .scene:not(.light) h2,html[data-theme="blue"] .hero h1,html[data-theme="blue"] .vault-sec h2,html[data-theme="blue"] .postcards h2{color:var(--shell);text-shadow:0 2px 14px rgba(4,18,28,.5),0 0 34px rgba(47,184,255,.35)}
+html[data-theme="blue"] .pill.dev{border:1px dashed rgba(94,69,21,.45)}
+html[data-theme="blue"] .nav .brand span{color:#0a4fb8}
+html[data-theme="blue"] footer .brand span{color:var(--accent-l)}
+html[data-theme="blue"] .nav .links a:hover{color:var(--accent-deep)}
+/* blue on blue photos: keep card edges crisp */
+html[data-theme="blue"] .scene:not(.light) .glass{background:rgba(6,20,32,.84);box-shadow:0 24px 60px -30px rgba(0,0,0,.75),0 0 0 1px rgba(95,216,255,.28)}
+html[data-theme="blue"] .scene.light{--c-comm:#a08a5c; --c-pool:#3b4fc4}
+html[data-theme="blue"] .scene:not(.light) .wf .bar[style*="c-pool"]{color:#061826}
+html[data-theme="blue"] .hl,html[data-theme="blue"] .hero h1 span{text-shadow:none}
+html[data-theme="blue"] .on-dark .hl,html[data-theme="blue"] .hero h1 span{--a1:#c4fcff;--a2:#6fe0ff;--a3:#69a2ff;filter:drop-shadow(0 2px 6px rgba(3,14,24,.75)) drop-shadow(0 0 22px rgba(47,184,255,.55))}
+html[data-theme="blue"] .timeline li::after{background:#e7dbc4;box-shadow:0 0 0 4px rgba(231,219,196,.18)}
+html[data-theme="blue"] .timeline li.next::after{background:transparent;border-color:#e7dbc4}
+html[data-theme="blue"] .timeline time{color:#e7dbc4}
+html[data-theme="blue"] .timeline li.key::after{background:var(--accent-grad);box-shadow:0 0 0 4px var(--glow-soft),0 0 18px var(--glow)}
+html[data-theme="blue"] .timeline li.key time{color:var(--accent-l)}
 </style>
 </head>
 <body>
 <header class="nav">
   <div class="wrap">
-    <a class="brand" href="#top" aria-label="Kudoken home"><img class="mark-old" src="images/mark.png" width="242" height="170" alt=""><svg class="mark-new" viewBox="0 0 100 100" aria-hidden="true"><defs><linearGradient id="nmg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" style="stop-color:var(--a1,#ff8a63)"/><stop offset=".5" style="stop-color:var(--a2,#b8381f)"/><stop offset="1" style="stop-color:var(--a3,#b8381f)"/></linearGradient></defs><circle cx="50" cy="50" r="48" fill="url(#nmg)"/><path fill="#0b2131" d="M30.7 24.7L44 24.7L44 46L61.3 24.7L77.3 24.7L56 50L77.3 75.3L61.3 75.3L44 54L44 75.3L30.7 75.3Z"/></svg><span>Kudoken</span></a>
+    <a class="brand" href="#top" aria-label="Kudoken home"><img class="mark-old" src="images/mark.png" width="242" height="170" alt=""><svg class="mark-new" viewBox="0 0 100 100" aria-hidden="true"><defs><linearGradient id="nmg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" style="stop-color:var(--a1,#ff8a63)"/><stop offset=".5" style="stop-color:var(--a2,#b8381f)"/><stop offset="1" style="stop-color:var(--a3,#b8381f)"/></linearGradient></defs><circle cx="50" cy="50" r="48" fill="url(#nmg)"/><path fill="#0b2131" d="M30.7 24.7L44 24.7L44 46L61.3 24.7L77.3 24.7L56 50L77.3 75.3L61.3 75.3L44 54L44 75.3L30.7 75.3Z"/></svg><img class="mark-fb" src="images/v3/fireball-320.webp" width="320" height="227" alt=""><span>Kudoken</span></a>
     <nav class="links" aria-label="Sections">
       <a href="#token">Token</a><a href="#plan">5 year plan</a><a href="#base">Base</a><a href="#universe">Universe</a><a href="#faq">FAQ</a>
     </nav>
@@ -452,16 +488,16 @@ html[data-font="chakra"] .hero h1{font-size:min(13vw,5.3rem)}
             <desc id="donut-d">Of 1,000,000,000 KDU: 928,063,063 (92.8%) in the founders' cold storage wallet, 41,299,598 (4.1%) in community wallets, 30,637,339 (3.1%) in the Uniswap pool.</desc>
             <g transform="rotate(-90 120 120)" fill="none" stroke-width="34">
               <circle cx="120" cy="120" r="88" style="stroke:var(--accent-fill)" stroke-dasharray="513.13 552.92"/>
-              <circle cx="120" cy="120" r="88" stroke="#2f8fa3" stroke-dasharray="22.83 552.92" stroke-dashoffset="-513.13"/>
-              <circle cx="120" cy="120" r="88" stroke="#2348c4" stroke-dasharray="16.94 552.92" stroke-dashoffset="-535.96"/>
+              <circle cx="120" cy="120" r="88" style="stroke:var(--c-comm)" stroke-dasharray="22.83 552.92" stroke-dashoffset="-513.13"/>
+              <circle cx="120" cy="120" r="88" style="stroke:var(--c-pool)" stroke-dasharray="16.94 552.92" stroke-dashoffset="-535.96"/>
             </g>
             <text x="120" y="118" text-anchor="middle" class="svg-big" style="font-size:40px">92.8%</text>
             <text x="120" y="142" text-anchor="middle" class="svg-small">in cold storage</text>
           </svg>
           <ul class="legend">
             <li><i style="background:var(--accent-fill)"></i><span>Founders' cold storage</span><b>928,063,063</b></li>
-            <li><i style="background:#2f8fa3"></i><span>Community wallets</span><b>41,299,598</b></li>
-            <li><i style="background:#2348c4"></i><span>Uniswap V3 pool</span><b>30,637,339</b></li>
+            <li><i style="background:var(--c-comm)"></i><span>Community wallets</span><b>41,299,598</b></li>
+            <li><i style="background:var(--c-pool)"></i><span>Uniswap V3 pool</span><b>30,637,339</b></li>
           </ul>
           <figcaption>On-chain balances, October 18, 2026. The pool and community figures shift as people trade.</figcaption>
         </figure>
@@ -472,8 +508,8 @@ html[data-font="chakra"] .hero h1{font-size:min(13vw,5.3rem)}
           <div class="dots" role="img" aria-label="190 dots, one per holder wallet. One red dot is the cold storage wallet, one blue dot is the Uniswap pool, 188 teal dots are community wallets."><i class="cold"></i><i class="pool"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
           <ul class="legend">
             <li><i style="background:var(--accent-fill)"></i><span>Cold storage wallet</span><b>1</b></li>
-            <li><i style="background:#2348c4"></i><span>Uniswap pool</span><b>1</b></li>
-            <li><i style="background:#2f8fa3"></i><span>Community wallets</span><b>188</b></li>
+            <li><i style="background:var(--c-pool)"></i><span>Uniswap pool</span><b>1</b></li>
+            <li><i style="background:var(--c-comm)"></i><span>Community wallets</span><b>188</b></li>
           </ul>
         </figure>
         <div class="addr">
@@ -515,9 +551,9 @@ html[data-font="chakra"] .hero h1{font-size:min(13vw,5.3rem)}
         <figure class="info">
           <ol class="wf" aria-label="Launch math: how 928,063,063 KDU got to cold storage">
             <li><span class="lbl">Created<small>May 6, 2021</small></span><span class="track"><span class="bar" style="left:0;width:100%;background:#10293a">1,000,000,000</span></span></li>
-            <li><span class="lbl">Into the pool<small>Jul 15, 2021</small></span><span class="track"><span class="bar out" style="left:87.5%;width:12.5%;background:#2348c4"><em>minus 125,000,000</em></span></span></li>
+            <li><span class="lbl">Into the pool<small>Jul 15, 2021</small></span><span class="track"><span class="bar out" style="left:87.5%;width:12.5%;background:var(--c-pool)"><em>minus 125,000,000</em></span></span></li>
             <li><span class="lbl">Kept back</span><span class="track"><span class="bar" style="left:0;width:87.5%;background:#386b86">875,000,000</span></span></li>
-            <li><span class="lbl">Out of the pool<small>Oct 21, 2021</small></span><span class="track"><span class="bar out" style="left:87.5%;width:5.31%;background:#2f8fa3"><em>plus 53,063,063</em></span></span></li>
+            <li><span class="lbl">Out of the pool<small>Oct 21, 2021</small></span><span class="track"><span class="bar out" style="left:87.5%;width:5.31%;background:var(--c-out)"><em>plus 53,063,063</em></span></span></li>
             <li><span class="lbl">Cold storage</span><span class="track"><span class="bar acc" style="left:0;width:92.81%;background:var(--accent-fill)">928,063,063</span></span></li>
           </ol>
           <figcaption>875,000,000 kept back plus 53,063,063 from the pool equals 928,063,063, which is 92.8% of all KDU.</figcaption>
@@ -612,7 +648,7 @@ html[data-font="chakra"] .hero h1{font-size:min(13vw,5.3rem)}
           </g>
           <circle cx="500" cy="310" r="96" fill="#0d2738" stroke="rgba(127,208,242,.6)" stroke-width="2"/>
         </svg>
-        <div class="hub"><img class="mark-old" src="images/mark.png" width="242" height="170" alt=""><svg class="mark-new" viewBox="0 0 100 100" aria-hidden="true"><defs><linearGradient id="nmg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" style="stop-color:var(--a1,#ff8a63)"/><stop offset=".5" style="stop-color:var(--a2,#b8381f)"/><stop offset="1" style="stop-color:var(--a3,#b8381f)"/></linearGradient></defs><circle cx="50" cy="50" r="48" fill="url(#nmg)"/><path fill="#0b2131" d="M30.7 24.7L44 24.7L44 46L61.3 24.7L77.3 24.7L56 50L77.3 75.3L61.3 75.3L44 54L44 75.3L30.7 75.3Z"/></svg><b>KDU</b><span class="pill live">Live on Ethereum</span></div>
+        <div class="hub"><img class="mark-old" src="images/mark.png" width="242" height="170" alt=""><svg class="mark-new" viewBox="0 0 100 100" aria-hidden="true"><defs><linearGradient id="nmg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" style="stop-color:var(--a1,#ff8a63)"/><stop offset=".5" style="stop-color:var(--a2,#b8381f)"/><stop offset="1" style="stop-color:var(--a3,#b8381f)"/></linearGradient></defs><circle cx="50" cy="50" r="48" fill="url(#nmg)"/><path fill="#0b2131" d="M30.7 24.7L44 24.7L44 46L61.3 24.7L77.3 24.7L56 50L77.3 75.3L61.3 75.3L44 54L44 75.3L30.7 75.3Z"/></svg><img class="mark-fb" src="images/v3/fireball-320.webp" width="320" height="227" alt=""><b>KDU</b><span class="pill live">Live on Ethereum</span></div>
         <ul>
           <li class="dev"><b>Monkey Jockey</b><p>Race rescue dogs, win KDU</p><span class="pill dev">KDU payouts coming</span><br><a href="https://monkeyjockey.space" target="_blank" rel="noopener">monkeyjockey.space</a></li>
           <li class="dev"><b>Outlet Mall</b><p>Pay at the stalls with KDU</p><span class="pill dev">Checkout coming</span><br><a href="https://outletmall.space" target="_blank" rel="noopener">outletmall.space</a></li>
@@ -650,7 +686,7 @@ html[data-font="chakra"] .hero h1{font-size:min(13vw,5.3rem)}
             </g>
             <g text-anchor="middle">
               <circle cx="220" cy="70" r="58" style="fill:var(--accent-fill)"/><text x="220" y="70" style="fill:var(--on-accent)" class="svg-big" style="font-size:30px">Play</text><text x="220" y="92" style="fill:var(--on-accent)" class="svg-small" style="opacity:1">Monkey Jockey</text>
-              <circle cx="370" cy="220" r="58" fill="#2348c4"/><text x="370" y="220" fill="#fff" class="svg-big" style="font-size:30px">Earn</text><text x="370" y="242" fill="#fff" class="svg-small" style="opacity:1">KDU to you</text>
+              <circle cx="370" cy="220" r="58" style="fill:var(--c-earn)"/><text x="370" y="220" fill="#fff" class="svg-big" style="font-size:30px">Earn</text><text x="370" y="242" fill="#fff" class="svg-small" style="opacity:1">KDU to you</text>
               <circle cx="220" cy="370" r="58" fill="#2f8fa3"/><text x="220" y="370" fill="#fff" class="svg-big" style="font-size:30px">Spend</text><text x="220" y="392" fill="#fff" class="svg-small" style="opacity:1">Mall, Biorama</text>
               <circle cx="70" cy="220" r="58" fill="#55703f"/><text x="70" y="220" fill="#fff" class="svg-big" style="font-size:30px">Give</text><text x="70" y="242" fill="#fff" class="svg-small" style="opacity:1">FlashTown</text>
               <text x="220" y="214" class="svg-big" style="font-size:28px;fill:#10293a">One</text><text x="220" y="244" class="svg-big" style="font-size:28px;fill:#10293a">wallet</text>
@@ -664,7 +700,7 @@ html[data-font="chakra"] .hero h1{font-size:min(13vw,5.3rem)}
         <figure class="info">
           <ol class="energy" aria-label="Energy is currency cycle">
             <li style="--c:var(--accent-fill)"><b>Your energy</b><span>Time, play, art, care. The stuff you put into the world.</span></li>
-            <li style="--c:#2348c4"><b>Becomes KDU</b><span>Recognized as tokens when you play and take part. Coming.</span></li>
+            <li style="--c:var(--c-earn)"><b>Becomes KDU</b><span>Recognized as tokens when you play and take part. Coming.</span></li>
             <li style="--c:#2f8fa3"><b>Flows to makers</b><span>Spent with the people building the universe. Coming.</span></li>
             <li style="--c:#55703f"><b>Feeds the animals</b><span>Shared with rescue animals through staking. Coming.</span></li>
             <li class="back">and the energy comes back around</li>
@@ -776,7 +812,7 @@ html[data-font="chakra"] .hero h1{font-size:min(13vw,5.3rem)}
 <footer>
   <div class="wrap">
     <div class="top">
-      <a class="brand" href="#top" aria-label="Back to top"><img class="mark-old" src="images/mark.png" width="242" height="170" alt=""><svg class="mark-new" viewBox="0 0 100 100" aria-hidden="true"><defs><linearGradient id="nmg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" style="stop-color:var(--a1,#ff8a63)"/><stop offset=".5" style="stop-color:var(--a2,#b8381f)"/><stop offset="1" style="stop-color:var(--a3,#b8381f)"/></linearGradient></defs><circle cx="50" cy="50" r="48" fill="url(#nmg)"/><path fill="#0b2131" d="M30.7 24.7L44 24.7L44 46L61.3 24.7L77.3 24.7L56 50L77.3 75.3L61.3 75.3L44 54L44 75.3L30.7 75.3Z"/></svg><span>Kudoken</span></a>
+      <a class="brand" href="#top" aria-label="Back to top"><img class="mark-old" src="images/mark.png" width="242" height="170" alt=""><svg class="mark-new" viewBox="0 0 100 100" aria-hidden="true"><defs><linearGradient id="nmg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" style="stop-color:var(--a1,#ff8a63)"/><stop offset=".5" style="stop-color:var(--a2,#b8381f)"/><stop offset="1" style="stop-color:var(--a3,#b8381f)"/></linearGradient></defs><circle cx="50" cy="50" r="48" fill="url(#nmg)"/><path fill="#0b2131" d="M30.7 24.7L44 24.7L44 46L61.3 24.7L77.3 24.7L56 50L77.3 75.3L61.3 75.3L44 54L44 75.3L30.7 75.3Z"/></svg><img class="mark-fb" src="images/v3/fireball-320.webp" width="320" height="227" alt=""><span>Kudoken</span></a>
       <nav aria-label="Footer">
         <a href="https://app.uniswap.org/swap?chain=mainnet&outputCurrency=0x09851dD4760a8ed111f850affb38B10f84e80C8A" target="_blank" rel="noopener">Buy on Uniswap</a>
         <a href="https://etherscan.io/token/0x09851dD4760a8ed111f850affb38B10f84e80C8A" target="_blank" rel="noopener">Etherscan</a>

@@ -1,6 +1,6 @@
 <header class="nav">
   <div class="wrap">
-    <a class="brand" href="#top" aria-label="Kudoken home"><img class="mark-old" src="images/mark.png" width="242" height="170" alt="">{{newmark}}<span>Kudoken</span></a>
+    <a class="brand" href="#top" aria-label="Kudoken home"><img class="mark-old" src="images/mark.png" width="242" height="170" alt="">{{newmark}}<img class="mark-fb" src="images/v3/fireball-320.webp" width="320" height="227" alt=""><span>Kudoken</span></a>
     <nav class="links" aria-label="Sections">
       <a href="#token">Token</a><a href="#plan">5 year plan</a><a href="#base">Base</a><a href="#universe">Universe</a><a href="#faq">FAQ</a>
     </nav>
@@ -63,16 +63,16 @@
             <desc id="donut-d">Of 1,000,000,000 KDU: 928,063,063 (92.8%) in the founders' cold storage wallet, 41,299,598 (4.1%) in community wallets, 30,637,339 (3.1%) in the Uniswap pool.</desc>
             <g transform="rotate(-90 120 120)" fill="none" stroke-width="34">
               <circle cx="120" cy="120" r="88" style="stroke:var(--accent-fill)" stroke-dasharray="513.13 552.92"/>
-              <circle cx="120" cy="120" r="88" stroke="#2f8fa3" stroke-dasharray="22.83 552.92" stroke-dashoffset="-513.13"/>
-              <circle cx="120" cy="120" r="88" stroke="#2348c4" stroke-dasharray="16.94 552.92" stroke-dashoffset="-535.96"/>
+              <circle cx="120" cy="120" r="88" style="stroke:var(--c-comm)" stroke-dasharray="22.83 552.92" stroke-dashoffset="-513.13"/>
+              <circle cx="120" cy="120" r="88" style="stroke:var(--c-pool)" stroke-dasharray="16.94 552.92" stroke-dashoffset="-535.96"/>
             </g>
             <text x="120" y="118" text-anchor="middle" class="svg-big" style="font-size:40px">92.8%</text>
             <text x="120" y="142" text-anchor="middle" class="svg-small">in cold storage</text>
           </svg>
           <ul class="legend">
             <li><i style="background:var(--accent-fill)"></i><span>Founders' cold storage</span><b>928,063,063</b></li>
-            <li><i style="background:#2f8fa3"></i><span>Community wallets</span><b>41,299,598</b></li>
-            <li><i style="background:#2348c4"></i><span>Uniswap V3 pool</span><b>30,637,339</b></li>
+            <li><i style="background:var(--c-comm)"></i><span>Community wallets</span><b>41,299,598</b></li>
+            <li><i style="background:var(--c-pool)"></i><span>Uniswap V3 pool</span><b>30,637,339</b></li>
           </ul>
           <figcaption>On-chain balances, October 18, 2026. The pool and community figures shift as people trade.</figcaption>
         </figure>
@@ -83,8 +83,8 @@
           <div class="dots" role="img" aria-label="190 dots, one per holder wallet. One red dot is the cold storage wallet, one blue dot is the Uniswap pool, 188 teal dots are community wallets.">{{dots}}</div>
           <ul class="legend">
             <li><i style="background:var(--accent-fill)"></i><span>Cold storage wallet</span><b>1</b></li>
-            <li><i style="background:#2348c4"></i><span>Uniswap pool</span><b>1</b></li>
-            <li><i style="background:#2f8fa3"></i><span>Community wallets</span><b>188</b></li>
+            <li><i style="background:var(--c-pool)"></i><span>Uniswap pool</span><b>1</b></li>
+            <li><i style="background:var(--c-comm)"></i><span>Community wallets</span><b>188</b></li>
           </ul>
         </figure>
         <div class="addr">
@@ -126,9 +126,9 @@
         <figure class="info">
           <ol class="wf" aria-label="Launch math: how 928,063,063 KDU got to cold storage">
             <li><span class="lbl">Created<small>May 6, 2021</small></span><span class="track"><span class="bar" style="left:0;width:100%;background:#10293a">1,000,000,000</span></span></li>
-            <li><span class="lbl">Into the pool<small>Jul 15, 2021</small></span><span class="track"><span class="bar out" style="left:87.5%;width:12.5%;background:#2348c4"><em>minus 125,000,000</em></span></span></li>
+            <li><span class="lbl">Into the pool<small>Jul 15, 2021</small></span><span class="track"><span class="bar out" style="left:87.5%;width:12.5%;background:var(--c-pool)"><em>minus 125,000,000</em></span></span></li>
             <li><span class="lbl">Kept back</span><span class="track"><span class="bar" style="left:0;width:87.5%;background:#386b86">875,000,000</span></span></li>
-            <li><span class="lbl">Out of the pool<small>Oct 21, 2021</small></span><span class="track"><span class="bar out" style="left:87.5%;width:5.31%;background:#2f8fa3"><em>plus 53,063,063</em></span></span></li>
+            <li><span class="lbl">Out of the pool<small>Oct 21, 2021</small></span><span class="track"><span class="bar out" style="left:87.5%;width:5.31%;background:var(--c-out)"><em>plus 53,063,063</em></span></span></li>
             <li><span class="lbl">Cold storage</span><span class="track"><span class="bar acc" style="left:0;width:92.81%;background:var(--accent-fill)">928,063,063</span></span></li>
           </ol>
           <figcaption>875,000,000 kept back plus 53,063,063 from the pool equals 928,063,063, which is 92.8% of all KDU.</figcaption>
@@ -223,7 +223,7 @@
           </g>
           <circle cx="500" cy="310" r="96" fill="#0d2738" stroke="rgba(127,208,242,.6)" stroke-width="2"/>
         </svg>
-        <div class="hub"><img class="mark-old" src="images/mark.png" width="242" height="170" alt="">{{newmark}}<b>KDU</b><span class="pill live">Live on Ethereum</span></div>
+        <div class="hub"><img class="mark-old" src="images/mark.png" width="242" height="170" alt="">{{newmark}}<img class="mark-fb" src="images/v3/fireball-320.webp" width="320" height="227" alt=""><b>KDU</b><span class="pill live">Live on Ethereum</span></div>
         <ul>
           <li class="dev"><b>Monkey Jockey</b><p>Race rescue dogs, win KDU</p><span class="pill dev">KDU payouts coming</span><br><a href="https://monkeyjockey.space" target="_blank" rel="noopener">monkeyjockey.space</a></li>
           <li class="dev"><b>Outlet Mall</b><p>Pay at the stalls with KDU</p><span class="pill dev">Checkout coming</span><br><a href="https://outletmall.space" target="_blank" rel="noopener">outletmall.space</a></li>
@@ -261,7 +261,7 @@
             </g>
             <g text-anchor="middle">
               <circle cx="220" cy="70" r="58" style="fill:var(--accent-fill)"/><text x="220" y="70" style="fill:var(--on-accent)" class="svg-big" style="font-size:30px">Play</text><text x="220" y="92" style="fill:var(--on-accent)" class="svg-small" style="opacity:1">Monkey Jockey</text>
-              <circle cx="370" cy="220" r="58" fill="#2348c4"/><text x="370" y="220" fill="#fff" class="svg-big" style="font-size:30px">Earn</text><text x="370" y="242" fill="#fff" class="svg-small" style="opacity:1">KDU to you</text>
+              <circle cx="370" cy="220" r="58" style="fill:var(--c-earn)"/><text x="370" y="220" fill="#fff" class="svg-big" style="font-size:30px">Earn</text><text x="370" y="242" fill="#fff" class="svg-small" style="opacity:1">KDU to you</text>
               <circle cx="220" cy="370" r="58" fill="#2f8fa3"/><text x="220" y="370" fill="#fff" class="svg-big" style="font-size:30px">Spend</text><text x="220" y="392" fill="#fff" class="svg-small" style="opacity:1">Mall, Biorama</text>
               <circle cx="70" cy="220" r="58" fill="#55703f"/><text x="70" y="220" fill="#fff" class="svg-big" style="font-size:30px">Give</text><text x="70" y="242" fill="#fff" class="svg-small" style="opacity:1">FlashTown</text>
               <text x="220" y="214" class="svg-big" style="font-size:28px;fill:#10293a">One</text><text x="220" y="244" class="svg-big" style="font-size:28px;fill:#10293a">wallet</text>
@@ -275,7 +275,7 @@
         <figure class="info">
           <ol class="energy" aria-label="Energy is currency cycle">
             <li style="--c:var(--accent-fill)"><b>Your energy</b><span>Time, play, art, care. The stuff you put into the world.</span></li>
-            <li style="--c:#2348c4"><b>Becomes KDU</b><span>Recognized as tokens when you play and take part. Coming.</span></li>
+            <li style="--c:var(--c-earn)"><b>Becomes KDU</b><span>Recognized as tokens when you play and take part. Coming.</span></li>
             <li style="--c:#2f8fa3"><b>Flows to makers</b><span>Spent with the people building the universe. Coming.</span></li>
             <li style="--c:#55703f"><b>Feeds the animals</b><span>Shared with rescue animals through staking. Coming.</span></li>
             <li class="back">and the energy comes back around</li>
@@ -387,7 +387,7 @@
 <footer>
   <div class="wrap">
     <div class="top">
-      <a class="brand" href="#top" aria-label="Back to top"><img class="mark-old" src="images/mark.png" width="242" height="170" alt="">{{newmark}}<span>Kudoken</span></a>
+      <a class="brand" href="#top" aria-label="Back to top"><img class="mark-old" src="images/mark.png" width="242" height="170" alt="">{{newmark}}<img class="mark-fb" src="images/v3/fireball-320.webp" width="320" height="227" alt=""><span>Kudoken</span></a>
       <nav aria-label="Footer">
         <a href="{{BUY}}" target="_blank" rel="noopener">Buy on Uniswap</a>
         <a href="https://etherscan.io/token/0x09851dD4760a8ed111f850affb38B10f84e80C8A" target="_blank" rel="noopener">Etherscan</a>
